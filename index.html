@@ -201,6 +201,20 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .pill-dark:hover { background: #333; }
 .pill-ghost-dark { background: rgba(0,0,0,0.08); color: var(--dark-text); }
 .pill-ghost-dark:hover { background: rgba(0,0,0,0.14); }
+@media (max-width: 700px) {
+  .vwp-grid { grid-template-columns: 1fr !important; }
+  .vwp-grid > div:last-child { order: -1; }
+}
+.exp-card { position: relative; display: block; min-height: 340px; background-size: cover; background-position: center; overflow: hidden; text-decoration: none; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.exp-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.1) 100%); transition: background 0.4s; }
+.exp-card:hover::before { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.15) 100%); }
+.exp-card:hover { transform: scale(1.015); z-index: 2; }
+.exp-card-inner { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; padding: 2rem 1.75rem; }
+.exp-num { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.5rem; }
+.exp-title { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.03em; color: #f5f5f7; line-height: 1.15; margin-bottom: 0.5rem; }
+.exp-desc { font-size: 0.875rem; font-weight: 300; color: rgba(245,245,247,0.65); line-height: 1.5; margin-bottom: 1rem; }
+.exp-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8125rem; font-weight: 400; color: var(--gold); letter-spacing: 0.01em; transition: gap 0.25s; }
+.exp-card:hover .exp-link { gap: 0.6rem; }
 .pill svg { width: 14px; height: 14px; }
 
 /* ── SECTION ATOMS ───────────────────────────────────── */
@@ -274,6 +288,44 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
   filter: contrast(1.08) saturate(1.05);
   will-change: auto;
 }
+/* Video Wall CSS visual background */
+#videowall-bg {
+  background: #000;
+  overflow: hidden;
+}
+#videowall-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212,175,106,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,106,0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: vwGrid 8s linear infinite;
+}
+#videowall-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(212,175,106,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 70% 60%, rgba(180,140,80,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 40% at 50% 80%, rgba(0,0,0,0.9) 0%, transparent 100%);
+  animation: vwGlow 6s ease-in-out infinite alternate;
+}
+@keyframes vwGrid {
+  from { background-position: 0 0; }
+  to   { background-position: 0 80px; }
+}
+@keyframes vwGlow {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #videowall-bg::before { animation: none; }
+  #videowall-bg::after  { animation: none; }
+}
+#story-videowall .story-bg::after { display: none; }
 .story.light .story-bg::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.88) 100%);
@@ -788,9 +840,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
-  <a href="#services" onclick="closeMob()">Experiences</a>
-  <a href="#gallery" onclick="closeMob()">Gallery</a>
-  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="experiences.html" onclick="closeMob()">Experiences</a>
   <a href="#booking" onclick="closeMob()">Book Now</a>
 </div>
 
@@ -798,9 +848,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <nav id="nav" class="over-dark" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
   <ul class="nav-links" role="list">
-    <li><a href="#services">Experiences</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
     <li><a href="#testimonials">Reviews</a></li>
   </ul>
   <a href="#booking" class="nav-cta">Book Now</a>
@@ -813,9 +861,9 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <section id="hero" aria-label="Hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Atlanta's Premier Photo Experience</p>
+    <p class="hero-eyebrow">Weddings · Corporate Events · Galas</p>
     <h1 class="hero-h1">Black Tie Booth.</h1>
-    <p class="hero-sub">Five iconic experiences.<br>One unforgettable night.</p>
+    <p class="hero-sub">Where luxury meets the moment.<br>Six iconic experiences for the events that matter most.</p>
     <div class="hero-actions">
       <a href="#booking" class="pill pill-blue">Book Your Date <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       <a href="#services" class="pill pill-ghost">Explore Booths</a>
@@ -831,6 +879,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <span class="marquee-item">Classic Photo Booth<span class="marquee-dot"></span></span>
     <span class="marquee-item">Vintage Photo Booth<span class="marquee-dot"></span></span>
     <span class="marquee-item">Mirror Booth<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Video Wall<span class="marquee-dot"></span></span>
     <span class="marquee-item">Weddings<span class="marquee-dot"></span></span>
     <span class="marquee-item">Corporate Events<span class="marquee-dot"></span></span>
     <span class="marquee-item">Galas<span class="marquee-dot"></span></span>
@@ -841,6 +890,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <span class="marquee-item">Classic Photo Booth<span class="marquee-dot"></span></span>
     <span class="marquee-item">Vintage Photo Booth<span class="marquee-dot"></span></span>
     <span class="marquee-item">Mirror Booth<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Video Wall<span class="marquee-dot"></span></span>
     <span class="marquee-item">Weddings<span class="marquee-dot"></span></span>
     <span class="marquee-item">Corporate Events<span class="marquee-dot"></span></span>
     <span class="marquee-item">Galas<span class="marquee-dot"></span></span>
@@ -877,90 +927,96 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   </div>
 </section>
 
-
-<!-- SERVICES -->
-<div id="services" aria-label="Our booth experiences">
-
-  <!-- 01 British Phone Booth -->
-  <section class="story dark" data-theme="dark" aria-label="British Phone Booth">
-    <div class="story-num" aria-hidden="true">01</div>
-    <div class="story-bg" style="background-image: url('IMG_3364.jpg')" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 01</p>
-      <h2 class="headline reveal d1">British Phone Booth.</h2>
-      <p class="subhead text-dim reveal d2" style="margin-top:0.75rem">An iconic white telephone box reimagined as a fully immersive experience that does more than take photos. Choose the <em>Video Phone</em> option to capture audio and video messages your guests will treasure forever, or opt for the <em>Audio Photo</em> experience with a vintage rotary handset that lets guests record a voice message paired with their photo, giving every print a sentimental, old-world feel. The jaw-dropping centerpiece guests queue for all night.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="#booking" class="pill pill-blue">Book this experience</a>
-      </div>
+<!-- VIDEO WALL PROMO -->
+<!-- VIDEO WALL PROMO -->
+<!-- VIDEO WALL PROMO -->
+<section id="videowall-promo" data-theme="dark" aria-label="Video Wall promotion" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <img src="ChatGPT Image Jun 21, 2026, 10_38_33 PM.png" alt="Black Tie Booth Video Wall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.75) 100%);"></div>
+  <div style="position:relative;z-index:2;text-align:center;padding:7rem 28px 4rem;width:100%;max-width:680px;">
+    <p class="eyebrow reveal">Featured Experience</p>
+    <h2 class="headline reveal d1" style="color:#f5f5f7;margin-top:0.75rem;font-size:clamp(2rem,6vw,4.5rem);line-height:1.1;">The Video Wall.<br><span style="color:var(--gold);">Your brand.<br>Their moment.</span></h2>
+    <p class="subhead reveal d2" style="color:rgba(245,245,247,0.78);margin-top:1.25rem;font-size:clamp(0.95rem,2.5vw,1.1rem);line-height:1.65;">Modular LED panels that join into one breathtaking full-scale display — or stand as individual accents. Built for weddings, corporate galas, and brand activations that demand the extraordinary.</p>
+    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;" class="reveal d3">
+      <a href="#booking" class="pill pill-blue">Reserve the Video Wall <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:14px;height:14px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a href="experiences.html#story-videowall" class="pill pill-ghost">See the Experience</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 02 360 Video -->
-  <section class="story dark" id="story-360" data-theme="dark" aria-label="360 Video Booth">
-    <div class="story-num" aria-hidden="true">02</div>
-    <div class="story-bg" aria-hidden="true">
-      <video id="vid360" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-        <source src="0a62cbbce79f48be9498bd9d239cb130.mov" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45);"></div>
-    </div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 02</p>
-      <h2 class="headline reveal d1">360 Video Booth.</h2>
-      <p class="subhead text-dim reveal d2" style="margin-top:0.75rem">Step onto the platform. The slow-motion arm glides around you. A cinematic clip your guests will share for weeks, ready in seconds.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="#booking" class="pill pill-blue">Book this experience</a>
-        <a href="#pricing" class="pill pill-ghost">See packages</a>
-      </div>
-    </div>
-  </section>
+<!-- EXPERIENCES PREVIEW -->
+<section id="services" data-theme="dark" aria-label="Our experiences" style="background:var(--dark);padding:6rem 24px 5rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="eyebrow reveal" style="text-align:center;">Six Signature Experiences</p>
+    <h2 class="headline reveal d1" style="text-align:center;color:#f5f5f7;margin-bottom:0.75rem;">Every occasion.<br>One unforgettable booth.</h2>
+    <p class="subhead reveal d2" style="text-align:center;color:var(--white-dim);max-width:600px;margin:0 auto 3.5rem;">From intimate weddings to corporate galas — each experience is designed to become the most talked-about moment of the night.</p>
 
-  <!-- 03 Classic Photo Booth -->
-  <section class="story dark" data-theme="dark" aria-label="Classic Photo Booth">
-    <div class="story-num" aria-hidden="true">03</div>
-    <div class="story-bg" style="background-image: url('IMG_2492.jpg')" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 03</p>
-      <h2 class="headline reveal d1">Classic Photo Booth.</h2>
-      <p class="subhead text-dim reveal d2" style="margin-top:0.75rem">Timeless enclosed booth with instant high-quality prints. Custom photo strips, digital copies, and unlimited sessions every time.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="#booking" class="pill pill-blue">Book this experience</a>
-        <a href="#pricing" class="pill pill-ghost">See packages</a>
-      </div>
-    </div>
-  </section>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;" class="reveal d2">
 
-  <!-- 04 Vintage Photo Booth -->
-  <section class="story dark" id="story-vintage" data-theme="dark" aria-label="Vintage Photo Booth">
-    <div class="story-num" aria-hidden="true">04</div>
-    <div class="story-bg" style="background-image: url('IMG_3365.AVIF');background-size:cover;background-position:center;image-rendering:-webkit-optimize-contrast;" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 04</p>
-      <h2 class="headline reveal d1">Vintage Photo Booth.</h2>
-      <p class="subhead reveal d2" style="margin-top:0.75rem;color:rgba(245,245,247,0.95);background:rgba(0,0,0,0.55);padding:1rem 1.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">Professional DSLR, studio-grade lighting, custom backdrop. Open, social, and endlessly adaptable to any venue. Studio quality. Event energy.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="#booking" class="pill pill-blue">Book this experience</a>
-        <a href="#pricing" class="pill pill-ghost">See packages</a>
-      </div>
-    </div>
-  </section>
+      <a href="experiences.html" class="exp-card" style="background-image:url('IMG_3364.jpg');" aria-label="British Phone Booth experience">
+        <div class="exp-card-inner">
+          <span class="exp-num">01</span>
+          <h3 class="exp-title">British Phone Booth</h3>
+          <p class="exp-desc">Video messages, voice prints and jaw-dropping presence.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
 
-  <!-- 05 Mirror Booth -->
-  <section class="story dark" data-theme="dark" aria-label="Mirror Booth">
-    <div class="story-num" aria-hidden="true">05</div>
-    <div class="story-bg" style="background-image: url('IMG_3367.JPG')" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 05</p>
-      <h2 class="headline reveal d1">Mirror Booth.</h2>
-      <p class="subhead text-dim reveal d2" style="margin-top:0.75rem">A full-length magic mirror that transforms into an interactive photo experience. Guests tap, sign, and customize their prints right on the screen. Elegant, modern, and endlessly entertaining. The showpiece that elevates any event.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="#booking" class="pill pill-blue">Book this experience<span class="p-cta-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
-        <a href="#pricing" class="pill pill-ghost">See packages</a>
-      </div>
-    </div>
-  </section>
+      <a href="experiences.html#story-360" class="exp-card" style="background:#0a0a0a;" aria-label="360 Video Booth experience">
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.7;">
+          <source src="IMG_2606.MOV" type="video/mp4">
+        </video>
+        <div class="exp-card-inner" style="position:relative;z-index:2;">
+          <span class="exp-num">02</span>
+          <h3 class="exp-title">360 Video Booth</h3>
+          <p class="exp-desc">Slow-motion cinematic clips your guests share for weeks.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
 
-</div>
+      <a href="experiences.html" class="exp-card" style="background:#161617;" aria-label="Classic Photo Booth experience">
+        <div class="exp-card-inner">
+          <span class="exp-num">03</span>
+          <h3 class="exp-title">Classic Photo Booth</h3>
+          <p class="exp-desc">Instant high-quality prints. Custom strips. Timeless.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+
+      <a href="experiences.html" class="exp-card" style="background-image:url('ChatGPT Image Jun 21, 2026, 10_47_33 PM.png');" aria-label="Vintage Photo Booth experience">
+        <div class="exp-card-inner">
+          <span class="exp-num">04</span>
+          <h3 class="exp-title">Vintage Photo Booth</h3>
+          <p class="exp-desc">Studio-grade lighting, DSLR quality, open-air energy.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+
+      <a href="experiences.html" class="exp-card" style="background-image:url('IMG_3367.JPG');" aria-label="Mirror Booth experience">
+        <div class="exp-card-inner">
+          <span class="exp-num">05</span>
+          <h3 class="exp-title">Mirror Booth</h3>
+          <p class="exp-desc">Guests tap, sign, and customize prints right on the glass.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+
+      <a href="experiences.html#story-videowall" class="exp-card" style="background-image:url('ChatGPT Image Jun 21, 2026, 10_38_33 PM.png');" aria-label="Video Wall experience">
+        <div class="exp-card-inner">
+          <span class="exp-num">06</span>
+          <h3 class="exp-title">Video Wall</h3>
+          <p class="exp-desc">Modular 4K LED panels. Seating charts. Corporate installations.</p>
+          <span class="exp-link">Explore <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;" class="reveal d3">
+      <a href="experiences.html" class="pill pill-blue" style="font-size:1rem;padding:0.75rem 2rem;">Explore All Experiences</a>
+    </div>
+  </div>
+</section>
 
 <!-- SPECS STRIP -->
 <div class="specs-strip" aria-label="Stats" role="region">
@@ -969,135 +1025,6 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <div class="spec reveal d2"><div class="spec-val"><span data-count="4">4</span></div><div class="spec-lbl">Signature Booths</div></div>
   <div class="spec reveal d3"><div class="spec-val" style="font-size:clamp(1.5rem,3vw,2.5rem)">ATL</div><div class="spec-lbl">& Southeast</div></div>
 </div>
-
-<!-- INSTAGRAM STRIP -->
-<section id="instagram" data-theme="dark" aria-label="Instagram feed">
-  <div class="ig-header">
-    <p class="eyebrow reveal">Follow Along</p>
-    <a href="https://www.instagram.com/blacklabeleventsandrentals?utm_source=qr" target="_blank" rel="noopener" class="ig-handle reveal d1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      @blacklabeleventsandrentals
-    </a>
-  </div>
-  <div class="ig-strip">
-    <div class="ig-tile reveal">
-      <img src="IMG_3364.jpg" alt="Black Tie Booth event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d1">
-      <img src="IMG_3192.PNG" alt="British Phone Booth at an event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d2">
-      <img src="6a4dda6e-7202-4305-9bf7-038233b4d76b.png" alt="Black Tie Booth event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d3">
-      <img src="IMG_2492.jpg" alt="Classic Photo Booth at an event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d3">
-      <img src="IMG_3367.JPG" alt="Mirror Booth at an event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d3">
-      <img src="IMG_3108.jpg" alt="Photo booth setup at an event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-    <div class="ig-tile reveal d3">
-      <img src="IMG_3365.AVIF" alt="Vintage Photo Booth at an event" loading="lazy">
-      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
-    </div>
-  </div>
-  <div class="ig-cta-wrap reveal">
-    <a href="https://www.instagram.com/blacklabeleventsandrentals?utm_source=qr" target="_blank" rel="noopener" class="pill pill-ghost">View on Instagram</a>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" data-theme="light" aria-label="Pricing packages">
-  <div class="pricing-header">
-    <p class="eyebrow reveal">Investment</p>
-    <h2 class="headline reveal d1">Simple, transparent pricing.</h2>
-    <p class="subhead reveal d2">Every package includes a dedicated attendant, unlimited sessions, and same-night digital delivery. No surprises.</p>
-  </div>
-  <div class="pricing-cards">
-
-    <article class="p-card reveal" aria-label="Silver package">
-      <p class="p-tier">Silver</p>
-      <div class="p-price">$895</div>
-      <p class="p-period">3-hour rental</p>
-      <div class="p-divider"></div>
-      <ul class="p-features">
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>1 Booth of your choice</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited sessions</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Instant digital delivery</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded overlay</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated attendant</li>
-      </ul>
-      <a href="#booking" class="p-cta">Book this Experience<span class="p-cta-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
-    </article>
-
-    <article class="p-card featured reveal d1" aria-label="Gold package, most popular">
-      <span class="p-badge">Most Popular</span>
-      <p class="p-tier">Gold</p>
-      <div class="p-price" style="color:#f5f5f7">$1,395</div>
-      <p class="p-period">4-hour rental</p>
-      <div class="p-divider"></div>
-      <ul class="p-features">
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>1 Signature booth</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited sessions + prints</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Online gallery (30 days)</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Props &amp; backdrop included</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Social sharing station</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom animation / GIF</li>
-      </ul>
-      <a href="#booking" class="p-cta">Book this Experience<span class="p-cta-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
-    </article>
-
-    <article class="p-card reveal d2" aria-label="Platinum package">
-      <p class="p-tier">Platinum</p>
-      <div class="p-price">$2,100<span style="font-size:1.25rem;color:var(--dark-mid)">+</span></div>
-      <p class="p-period">5-hour premium</p>
-      <div class="p-divider"></div>
-      <ul class="p-features">
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Up to 2 booths</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Gold</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Keychain or magnet keepsakes</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>360 video highlight reel</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>White-glove setup &amp; teardown</li>
-        <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated event manager</li>
-      </ul>
-      <a href="#booking" class="p-cta">Book this Experience<span class="p-cta-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
-    </article>
-
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" data-theme="dark" aria-label="Client reviews">
-  <div class="t-header">
-    <p class="eyebrow reveal">Reviews</p>
-    <h2 class="headline reveal d1" style="color:#f5f5f7">Loved by Atlanta.</h2>
-  </div>
-  <div class="t-grid">
-    <div class="t-card reveal">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
-      <p class="t-quote">"The 360 booth was absolutely incredible at our wedding. Every single guest was obsessed — we're still getting messages about it weeks later."</p>
-      <div class="t-person"><div class="t-av">SR</div><div><p class="t-name">Savannah &amp; Ryan</p><p class="t-event">Wedding · The Biltmore, Atlanta</p></div></div>
-    </div>
-    <div class="t-card reveal d1">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
-      <p class="t-quote">"We booked the British Phone Booth for our holiday party — it became the centerpiece of the event. Professionalism from start to finish."</p>
-      <div class="t-person"><div class="t-av">MJ</div><div><p class="t-name">Marcus Johnson</p><p class="t-event">Corporate Event · Salesforce Tower ATL</p></div></div>
-    </div>
-    <div class="t-card reveal d2">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
-      <p class="t-quote">"Worth every penny. The team arrived early, set up beautifully, and the photos were stunning. Our guests haven't stopped talking about it."</p>
-      <div class="t-person"><div class="t-av">AH</div><div><p class="t-name">Angela Harris</p><p class="t-event">Charity Gala · Fox Theatre, Atlanta</p></div></div>
-    </div>
-  </div>
-</section>
 
 <!-- SERVICE AREAS MAP -->
 <section id="service-areas" data-theme="dark" aria-label="Service areas">
@@ -1113,6 +1040,44 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
       <div class="city-pill"><span class="city-dot"></span>Charlotte, NC</div>
       <div class="city-pill"><span class="city-dot"></span>Austin, TX</div>
       <div class="city-pill"><span class="city-dot"></span>San Antonio, TX</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing" data-theme="light" aria-label="Pricing packages">
+  <div class="pricing-header">
+    <p class="eyebrow reveal">Investment</p>
+    <h2 class="headline reveal d1">Curated for every occasion.</h2>
+    <p class="subhead reveal d2">Each experience is crafted to feel effortless. A dedicated attendant by your side, unlimited sessions all evening, and your memories delivered the same night. Every detail handled, so you never have to think twice.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;" class="reveal d3">
+      <a href="#booking" class="pill pill-dark">Book Now <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:14px;height:14px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" data-theme="dark" aria-label="Client reviews">
+  <div class="t-header">
+    <p class="eyebrow reveal">Reviews</p>
+    <h2 class="headline reveal d1" style="color:#f5f5f7">Trusted by couples.<br>Chosen by corporations.</h2>
+  </div>
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <p class="t-quote">"The 360 booth was absolutely incredible at our wedding. Every single guest was obsessed and we're still getting messages about it weeks later."</p>
+      <div class="t-person"><div class="t-av">SR</div><div><p class="t-name">Savannah &amp; Ryan</p><p class="t-event">Wedding · The Biltmore, Atlanta</p></div></div>
+    </div>
+    <div class="t-card reveal d1">
+      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <p class="t-quote">"We booked the British Phone Booth for our holiday party and it became the centerpiece of the event. Professionalism from start to finish."</p>
+      <div class="t-person"><div class="t-av">MJ</div><div><p class="t-name">Marcus Johnson</p><p class="t-event">Corporate Event · Salesforce Tower ATL</p></div></div>
+    </div>
+    <div class="t-card reveal d2">
+      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <p class="t-quote">"Worth every penny. The team arrived early, set up beautifully, and the photos were stunning. Our guests haven't stopped talking about it."</p>
+      <div class="t-person"><div class="t-av">AH</div><div><p class="t-name">Angela Harris</p><p class="t-event">Charity Gala · Fox Theatre, Atlanta</p></div></div>
     </div>
   </div>
 </section>
@@ -1152,7 +1117,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
           </div>
           <div class="fg">
             <label class="flbl" for="fBo">Preferred Booth</label>
-            <div class="fsel-wrap"><select class="fsel" id="fBo"><option value="" disabled selected>Select a booth</option><option>British Phone Booth</option><option>360 Video Booth</option><option>Classic Photo Booth</option><option>Vintage Photo Booth</option><option>Mirror Booth</option><option>Not sure yet</option></select></div>
+            <div class="fsel-wrap"><select class="fsel" id="fBo"><option value="" disabled selected>Select a booth</option><option>British Phone Booth</option><option>360 Video Booth</option><option>Classic Photo Booth</option><option>Vintage Photo Booth</option><option>Mirror Booth</option><option>Video Wall</option><option>Not sure yet</option></select></div>
           </div>
           <div class="fg"><label class="flbl" for="fMs">Additional Details</label><textarea class="fta" id="fMs" placeholder="Guest count, venue, vision for the event..."></textarea></div>
           <button type="submit" class="fsubmit" id="fBtn">Send Inquiry<span class="fsubmit-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></button>
@@ -1169,8 +1134,8 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
 <!-- CTA -->
 <section id="cta" data-theme="dark" aria-label="Call to action">
-  <div class="cta-h reveal">Your event deserves to be<br><span class="text-gold cta-gold-shimmer">unforgettable.</span></div>
-  <p class="cta-sub reveal d1">Dates book fast. Let's start planning today.</p>
+  <div class="cta-h reveal">Weddings. Galas.<br><span class="text-gold cta-gold-shimmer">Corporate events done right.</span></div>
+  <p class="cta-sub reveal d1">Whether it's 50 guests or 5,000 — we bring the experience your event deserves. Dates fill quickly.</p>
   <div class="cta-btns reveal d2">
     <a href="#booking" class="pill pill-blue">Book Your Date</a>
     <a href="tel:+14045550100" class="pill pill-ghost">Call Us</a>
@@ -1184,14 +1149,14 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
       <span class="f-brand">Black Tie Booth</span>
       <p class="f-tagline">Atlanta's most elegant photo booth experience. Creating unforgettable moments since 2018.</p>
       <div class="f-socials" aria-label="Social media">
-        <a href="#" class="f-soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.instagram.com/blacktieboothco?igsh=MXVlM3lkZHk3b3FqMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram @blacktieboothco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
         <a href="#" class="f-soc" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
         <a href="#" class="f-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
       </div>
     </div>
-    <div class="f-col"><h4>Experiences</h4><ul><li><a href="#services">British Phone Booth</a></li><li><a href="#services">360 Video Booth</a></li><li><a href="#services">Classic Photo Booth</a></li><li><a href="#services">Vintage Photo Booth</a></li><li><a href="#services">Mirror Booth</a></li></ul></div>
+    <div class="f-col"><h4>Experiences</h4><ul><li><a href="experiences.html">British Phone Booth</a></li><li><a href="experiences.html">360 Video Booth</a></li><li><a href="experiences.html">Classic Photo Booth</a></li><li><a href="experiences.html">Vintage Photo Booth</a></li><li><a href="experiences.html">Mirror Booth</a></li><li><a href="experiences.html#story-videowall">Video Wall</a></li></ul></div>
     <div class="f-col"><h4>Events</h4><ul><li><a href="#booking">Weddings</a></li><li><a href="#booking">Corporate</a></li><li><a href="#booking">Galas</a></li><li><a href="#booking">Brand Activations</a></li></ul></div>
-    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
+    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco?igsh=MXVlM3lkZHk3b3FqMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p class="f-copy">&copy; 2025 Black Tie Booth. All rights reserved.</p>

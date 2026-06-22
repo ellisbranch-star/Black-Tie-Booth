@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(curl -s https://api.github.com/repos/anthropics/skills/contents/skills/frontend-design)",
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md)",
+      "Read(//Users/ellisbranch/.claude/**)",
+      "Bash(ls \"/Users/ellisbranch/Library/Application Support/Claude/claude-code/2.1.170/\" 2>/dev/null | head -20; find \"/Users/ellisbranch/Library/Application Support/Claude/claude-code/\" -name \"skills\" -type d 2>/dev/null)",
+      "Bash(find \"/Users/ellisbranch/Library/Application Support/Claude/claude-code/\" -name \"*.md\" 2>/dev/null | head -10; find ~/.claude -name \"SKILL*\" 2>/dev/null; find ~ -path \"*/claude/skills*\" -maxdepth 6 2>/dev/null | head)",
+      "Bash(mkdir -p \"/Users/ellisbranch/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/62763cf3-db7b-4085-83a3-dff7d934b5c4/7dce0e7b-64f8-4f4b-b7d2-b2b272709e09/skills/frontend-design\")",
+      "WebFetch(domain:github.com)",
+      "Bash(npm install *)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/ellisbranch/.nvm/**)",
+      "Bash(command -v brew)",
+      "Bash(brew list *)",
+      "Bash(curl -fsSL https://nodejs.org/dist/v22.16.0/node-v22.16.0-darwin-arm64.tar.gz -o /tmp/node.tar.gz)",
+      "Bash(tar -xzf /tmp/node.tar.gz -C /tmp/)",
+      "Read(//tmp/node-v22.16.0-darwin-arm64/**)",
+      "Bash(cp \"/Users/ellisbranch/Downloads/Black Tie Booth Assets /5.png\" \"/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/logo.png\")"
+    ]
+  }
+}
