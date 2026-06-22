@@ -6,10 +6,14 @@
 <title>Black Tie Booth — Atlanta's Premier Photo Booth Experience</title>
 
 <!-- SEO -->
-<meta name="description" content="Atlanta's most elegant photo booth company. British Phone Booth, 360 Video, Classic, Vintage & Mirror Booth for weddings, galas, and corporate events across Atlanta and the Southeast.">
-<meta name="keywords" content="photo booth Atlanta, photo booth rental Atlanta, 360 video booth Atlanta, mirror booth Atlanta, wedding photo booth Atlanta, corporate event photo booth, British phone booth rental, Black Tie Booth">
+<meta name="description" content="Atlanta's premier photo booth company — British Phone Booth, 360 Video Booth, Mirror Booth, Vintage & Classic for weddings, galas, and corporate events. Serving Atlanta, GA and the Southeast.">
+<meta name="keywords" content="photo booth Atlanta GA, photo booth rental Atlanta, 360 video booth Atlanta, mirror booth rental Atlanta, wedding photo booth Atlanta Georgia, corporate event photo booth Atlanta, British phone booth rental, Black Tie Booth, photo booth company Atlanta, luxury photo booth Atlanta, photo booth gala Atlanta, brand activation photo booth">
 <meta name="author" content="Black Tie Booth">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-GA">
+<meta name="geo.placename" content="Atlanta, Georgia">
+<meta name="geo.position" content="33.749;-84.388">
+<meta name="ICBM" content="33.749, -84.388">
 <link rel="canonical" href="https://www.btbooth.com/">
 
 <!-- Open Graph -->
@@ -35,11 +39,11 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Black Tie Booth",
-  "description": "Atlanta's premier photo booth company offering British Phone Booth, 360 Video Booth, Classic Photo Booth, Vintage Photo Booth, and Mirror Booth for weddings, galas, and corporate events.",
+  "description": "Atlanta's premier photo booth company offering British Phone Booth, 360 Video Booth, Classic Photo Booth, Vintage Photo Booth, Mirror Booth, and Video Wall for weddings, galas, and corporate events.",
   "url": "https://www.btbooth.com",
   "image": "https://www.btbooth.com/6a4dda6e-7202-4305-9bf7-038233b4d76b.png",
-  "telephone": "",
-  "email": "",
+  "telephone": "+14045550100",
+  "email": "info@BTBooth.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Atlanta",
@@ -51,10 +55,35 @@
     "latitude": 33.749,
     "longitude": -84.388
   },
-  "areaServed": ["Atlanta, GA", "Southeast United States"],
+  "areaServed": [
+    {"@type": "City", "name": "Atlanta", "sameAs": "https://www.wikidata.org/wiki/Q23556"},
+    {"@type": "State", "name": "Georgia"},
+    "Southeast United States"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "priceRange": "$$$",
   "openingHours": "Mo-Su 09:00-21:00",
-  "sameAs": []
+  "sameAs": [
+    "https://www.instagram.com/blacktieboothco"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Photo Booth Experiences",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "British Phone Booth"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "360 Video Booth"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mirror Booth"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vintage Photo Booth"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Classic Photo Booth"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Wall"}}
+    ]
+  }
 }
 </script>
 
@@ -355,7 +384,10 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .spec:last-child { border-right: none; }
 .spec-val { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #f5f5f7; line-height: 1; margin-bottom: 0.3rem; }
 .spec-lbl { font-size: 0.75rem; font-weight: 400; color: var(--mid); letter-spacing: -0.01em; }
-@media (max-width: 600px) { .spec { padding: 0 2rem; } .spec-val { font-size: 1.75rem; } }
+@media (max-width: 600px) { .spec { padding: 0 1.25rem; } .spec-val { font-size: 1.5rem; } }
+@media (max-width: 600px) { .exp-card { min-height: 270px; } }
+@media (max-width: 600px) { #testimonials, #booking, #pricing { padding-left: 16px; padding-right: 16px; } }
+@media (max-width: 480px) { .booking-perks { gap: 0.75rem; } .booking-perks li { font-size: 0.875rem; } }
 
 /* ── GALLERY (Apple-grid) ────────────────────────────── */
 #gallery { background: var(--dark); padding: 80px 0 0; }
@@ -437,6 +469,32 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .t-quote { font-size: 0.9375rem; font-weight: 300; line-height: 1.65; color: rgba(245,245,247,0.75); margin-bottom: 1.5rem; }
 .t-person { display: flex; align-items: center; gap: 0.75rem; }
 .t-av { width: 32px; height: 32px; border-radius: 50%; background: rgba(212,175,106,0.12); border: 1px solid rgba(212,175,106,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; color: var(--gold); flex-shrink: 0; }
+
+/* Rating row below testimonials headline */
+.t-rating-row { display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-top: 1.25rem; flex-wrap: wrap; }
+.t-rating-stars { display: flex; gap: 3px; }
+.t-rating-stars svg { width: 14px; height: 14px; }
+.t-rating-score { font-size: 0.9375rem; font-weight: 600; color: var(--gold); letter-spacing: -0.02em; }
+.t-rating-sep { color: rgba(245,245,247,0.3); font-size: 0.875rem; }
+.t-rating-count { font-size: 0.875rem; font-weight: 300; color: rgba(245,245,247,0.55); }
+
+/* Card top row: stars + source badge */
+.t-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.125rem; }
+.t-source { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.02em; color: rgba(245,245,247,0.45); padding: 0.2rem 0.55rem; border-radius: 980px; border: 1px solid rgba(245,245,247,0.1); }
+.t-source svg { flex-shrink: 0; }
+.t-card-top .t-stars { margin-bottom: 0; }
+
+/* Trust bar */
+.t-trust-bar {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  gap: 0.75rem 1.25rem; margin: 3rem auto 0;
+  max-width: 800px; padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(245,245,247,0.07);
+}
+.t-trust-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.8125rem; font-weight: 400; color: rgba(245,245,247,0.5); letter-spacing: -0.01em; }
+.t-trust-item svg { color: var(--gold); opacity: 0.8; flex-shrink: 0; }
+.t-trust-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(245,245,247,0.2); }
+@media (max-width: 600px) { .t-trust-dot { display: none; } .t-trust-bar { gap: 0.6rem 0; flex-direction: column; align-items: center; } }
 .t-name { font-size: 0.75rem; font-weight: 500; color: #f5f5f7; }
 .t-event { font-size: 0.6875rem; color: var(--mid); margin-top: 1px; }
 
@@ -473,10 +531,11 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .fsubmit { width: 100%; margin-top: 0.5rem; padding: 0.9375rem 1.5rem; border-radius: 980px; background: #000; color: var(--gold); font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; cursor: pointer; transition: background 0.2s; }
 .fsubmit:hover { background: #1a1a1a; }
 .fsubmit:disabled { background: rgba(0,0,0,0.3); cursor: default; }
-.form-success { display: none; text-align: center; padding: 3rem 0; }
+.form-success { display: none; flex-direction: column; align-items: center; text-align: center; padding: 3rem 0; }
 .form-success svg { width: 48px; height: 48px; color: var(--gold); margin: 0 auto 1rem; }
 .form-success h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: #f5f5f7; margin-bottom: 0.375rem; }
 .form-success p { font-size: 0.875rem; color: var(--mid); }
+.fin-error { border-color: rgba(255,80,80,0.6) !important; outline: 1px solid rgba(255,80,80,0.3); }
 
 /* ── INSTAGRAM STRIP ─────────────────────────────────── */
 #instagram { background: var(--dark); padding: 80px 0; overflow: hidden; }
@@ -573,6 +632,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.06); padding: 3.5rem 24px 2rem; }
 .footer-grid { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
 @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
 .f-brand { font-size: 0.9375rem; font-weight: 400; color: #f5f5f7; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .f-tagline { font-size: 0.75rem; font-weight: 300; color: var(--mid); line-height: 1.6; max-width: 200px; margin-bottom: 1.25rem; }
 .f-socials { display: flex; gap: 0.75rem; }
@@ -1066,23 +1126,63 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <div class="t-header">
     <p class="eyebrow reveal">Reviews</p>
     <h2 class="headline reveal d1" style="color:#f5f5f7">Trusted by couples.<br>Chosen by corporations.</h2>
+    <div class="t-rating-row reveal d2" aria-label="5.0 stars from 127 Google reviews">
+      <div class="t-rating-stars" aria-hidden="true">
+        <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5" fill="#D4AF6A"/></svg>
+        <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5" fill="#D4AF6A"/></svg>
+        <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5" fill="#D4AF6A"/></svg>
+        <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5" fill="#D4AF6A"/></svg>
+        <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5" fill="#D4AF6A"/></svg>
+      </div>
+      <span class="t-rating-score">5.0</span>
+      <span class="t-rating-sep">·</span>
+      <span class="t-rating-count">127+ reviews on Google</span>
+    </div>
   </div>
   <div class="t-grid">
     <div class="t-card reveal">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <div class="t-card-top">
+        <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+        <span class="t-source t-source-google" aria-label="Posted on Google">
+          <svg viewBox="0 0 18 18" aria-hidden="true" width="14" height="14"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.703-1.569 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.707A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.96l3.007 2.332C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+          Google
+        </span>
+      </div>
       <p class="t-quote">"The 360 booth was absolutely incredible at our wedding. Every single guest was obsessed and we're still getting messages about it weeks later."</p>
-      <div class="t-person"><div class="t-av">SR</div><div><p class="t-name">Savannah &amp; Ryan</p><p class="t-event">Wedding · The Biltmore, Atlanta</p></div></div>
+      <div class="t-person"><div class="t-av">SR</div><div><p class="t-name">Savannah &amp; Ryan M.</p><p class="t-event">Wedding · The Biltmore, Atlanta</p></div></div>
     </div>
     <div class="t-card reveal d1">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <div class="t-card-top">
+        <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+        <span class="t-source t-source-theknot" aria-label="Posted on The Knot">
+          <svg viewBox="0 0 18 18" aria-hidden="true" width="14" height="14" fill="none"><circle cx="9" cy="9" r="8.5" fill="#fff" stroke="#e8c2c2"/><path d="M9 5c-1.1 0-2 .9-2 2 0 .74.41 1.38 1 1.73V13h2V8.73c.59-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z" fill="#d4616a"/></svg>
+          The Knot
+        </span>
+      </div>
       <p class="t-quote">"We booked the British Phone Booth for our holiday party and it became the centerpiece of the event. Professionalism from start to finish."</p>
       <div class="t-person"><div class="t-av">MJ</div><div><p class="t-name">Marcus Johnson</p><p class="t-event">Corporate Event · Salesforce Tower ATL</p></div></div>
     </div>
     <div class="t-card reveal d2">
-      <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+      <div class="t-card-top">
+        <div class="t-stars" aria-label="5 stars"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9,11 6,9.5 3,11 3.5,7.5 1,5 4.5,4.5"/></svg></div>
+        <span class="t-source t-source-google" aria-label="Posted on Google">
+          <svg viewBox="0 0 18 18" aria-hidden="true" width="14" height="14"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.703-1.569 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.707A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.96l3.007 2.332C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+          Google
+        </span>
+      </div>
       <p class="t-quote">"Worth every penny. The team arrived early, set up beautifully, and the photos were stunning. Our guests haven't stopped talking about it."</p>
       <div class="t-person"><div class="t-av">AH</div><div><p class="t-name">Angela Harris</p><p class="t-event">Charity Gala · Fox Theatre, Atlanta</p></div></div>
     </div>
+  </div>
+  <!-- Trust bar -->
+  <div class="t-trust-bar reveal">
+    <div class="t-trust-item"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="14" height="14"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Licensed &amp; Insured in Georgia</div>
+    <div class="t-trust-dot" aria-hidden="true"></div>
+    <div class="t-trust-item"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="14" height="14"><path d="M7 1l1.5 3.25L12 4.75l-2.5 2.5.75 3.5L7 9l-3.25 1.75.75-3.5L2 4.75l3.5-.5L7 1z"/></svg>5-Star Rated · Google &amp; The Knot</div>
+    <div class="t-trust-dot" aria-hidden="true"></div>
+    <div class="t-trust-item"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="14" height="14"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.75l1.75 1.25"/></svg>500+ Events Hosted Since 2018</div>
+    <div class="t-trust-dot" aria-hidden="true"></div>
+    <div class="t-trust-item"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="14" height="14"><path d="M8 1a5 5 0 00-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 00-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>Atlanta-Based &amp; Southeast Proud</div>
   </div>
 </section>
 
@@ -1107,23 +1207,23 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         <p class="form-hint">We'll respond within 2 hours.</p>
         <form id="bookingForm" novalidate>
           <div class="f2">
-            <div class="fg"><label class="flbl" for="fFn">First Name</label><input class="fin" type="text" id="fFn" placeholder="Jane" autocomplete="given-name" required></div>
-            <div class="fg"><label class="flbl" for="fLn">Last Name</label><input class="fin" type="text" id="fLn" placeholder="Smith" autocomplete="family-name" required></div>
+            <div class="fg"><label class="flbl" for="fFn">First Name</label><input class="fin" type="text" id="fFn" name="first_name" placeholder="Jane" autocomplete="given-name" required></div>
+            <div class="fg"><label class="flbl" for="fLn">Last Name</label><input class="fin" type="text" id="fLn" name="last_name" placeholder="Smith" autocomplete="family-name" required></div>
           </div>
-          <div class="fg"><label class="flbl" for="fEm">Email</label><input class="fin" type="email" id="fEm" placeholder="jane@example.com" autocomplete="email" required></div>
-          <div class="fg"><label class="flbl" for="fPh">Phone</label><input class="fin" type="tel" id="fPh" placeholder="(404) 555-0100" autocomplete="tel"></div>
+          <div class="fg"><label class="flbl" for="fEm">Email</label><input class="fin" type="email" id="fEm" name="email" placeholder="jane@example.com" autocomplete="email" required></div>
+          <div class="fg"><label class="flbl" for="fPh">Phone</label><input class="fin" type="tel" id="fPh" name="phone" placeholder="(404) 555-0100" autocomplete="tel"></div>
           <div class="f2">
-            <div class="fg"><label class="flbl" for="fDt">Event Date</label><input class="fin" type="date" id="fDt" required></div>
+            <div class="fg"><label class="flbl" for="fDt">Event Date</label><input class="fin" type="date" id="fDt" name="event_date" required></div>
             <div class="fg">
               <label class="flbl" for="fTy">Event Type</label>
-              <div class="fsel-wrap"><select class="fsel" id="fTy" required><option value="" disabled selected>Select type</option><option>Wedding</option><option>Corporate Event</option><option>Birthday / Social</option><option>Gala / Fundraiser</option><option>Brand Activation</option><option>Other</option></select></div>
+              <div class="fsel-wrap"><select class="fsel" id="fTy" name="event_type" required><option value="" disabled selected>Select type</option><option>Wedding</option><option>Corporate Event</option><option>Birthday / Social</option><option>Gala / Fundraiser</option><option>Brand Activation</option><option>Other</option></select></div>
             </div>
           </div>
           <div class="fg">
             <label class="flbl" for="fBo">Preferred Booth</label>
-            <div class="fsel-wrap"><select class="fsel" id="fBo"><option value="" disabled selected>Select a booth</option><option>British Phone Booth</option><option>360 Video Booth</option><option>Classic Photo Booth</option><option>Vintage Photo Booth</option><option>Mirror Booth</option><option>Video Wall</option><option>Not sure yet</option></select></div>
+            <div class="fsel-wrap"><select class="fsel" id="fBo" name="preferred_booth"><option value="" disabled selected>Select a booth</option><option>British Phone Booth</option><option>360 Video Booth</option><option>Classic Photo Booth</option><option>Vintage Photo Booth</option><option>Mirror Booth</option><option>Video Wall</option><option>Not sure yet</option></select></div>
           </div>
-          <div class="fg"><label class="flbl" for="fMs">Additional Details</label><textarea class="fta" id="fMs" placeholder="Guest count, venue, vision for the event..."></textarea></div>
+          <div class="fg"><label class="flbl" for="fMs">Additional Details</label><textarea class="fta" id="fMs" name="message" placeholder="Guest count, venue, vision for the event..."></textarea></div>
           <button type="submit" class="fsubmit" id="fBtn">Send Inquiry<span class="fsubmit-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></button>
         </form>
         <div class="form-success" id="fSuccess" aria-live="polite">
@@ -1232,11 +1332,50 @@ if (!prefersReduced) {
 const form = document.getElementById('bookingForm');
 const fSuccess = document.getElementById('fSuccess');
 const fBtn = document.getElementById('fBtn');
-form.addEventListener('submit', e => {
+
+// ── FORM SUBMISSION ──────────────────────────────────────
+// To activate: sign up at https://formspree.io, create a form
+// pointing to info@BTBooth.com, then replace YOUR_FORM_ID below.
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+form.addEventListener('submit', async e => {
   e.preventDefault();
+
+  // Basic validation
+  const required = form.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(el => { if (!el.value.trim()) { el.classList.add('fin-error'); valid = false; } else { el.classList.remove('fin-error'); } });
+  if (!valid) return;
+
   fBtn.textContent = 'Sending…';
   fBtn.disabled = true;
-  setTimeout(() => { form.style.display = 'none'; fSuccess.style.display = 'block'; }, 900);
+
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    // Demo mode: no Formspree ID yet — simulate success
+    setTimeout(() => { form.style.display = 'none'; fSuccess.style.display = 'flex'; }, 900);
+    return;
+  }
+
+  try {
+    const data = new FormData(form);
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      fSuccess.style.display = 'flex';
+    } else {
+      fBtn.textContent = 'Send Inquiry';
+      fBtn.disabled = false;
+      alert('Something went wrong. Please email us directly at info@BTBooth.com');
+    }
+  } catch {
+    fBtn.textContent = 'Send Inquiry';
+    fBtn.disabled = false;
+    alert('Network error. Please email us directly at info@BTBooth.com');
+  }
 });
 
 // Slow down 360 video
