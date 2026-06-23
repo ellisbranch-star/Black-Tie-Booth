@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Tie Booth — Atlanta's Premier Photo Booth Experience</title>
+<title>Black Tie Booth: Atlanta's Premier Photo Booth Experience</title>
 
 <!-- SEO -->
-<meta name="description" content="Atlanta's premier photo booth company — British Phone Booth, 360 Video Booth, Mirror Booth, Vintage & Classic for weddings, galas, and corporate events. Serving Atlanta, GA and the Southeast.">
+<meta name="description" content="Atlanta's premier photo booth company. British Phone Booth,, 360 Video Booth, Mirror Booth, Vintage & Classic for weddings, galas, and corporate events. Serving Atlanta, GA and the Southeast.">
 <meta name="keywords" content="photo booth Atlanta GA, photo booth rental Atlanta, 360 video booth Atlanta, mirror booth rental Atlanta, wedding photo booth Atlanta Georgia, corporate event photo booth Atlanta, British phone booth rental, Black Tie Booth, photo booth company Atlanta, luxury photo booth Atlanta, photo booth gala Atlanta, brand activation photo booth">
 <meta name="author" content="Black Tie Booth">
 <meta name="robots" content="index, follow">
@@ -19,7 +19,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Black Tie Booth">
-<meta property="og:title" content="Black Tie Booth — Atlanta's Premier Photo Booth Experience">
+<meta property="og:title" content="Black Tie Booth: Atlanta's Premier Photo Booth Experience">
 <meta property="og:description" content="Five iconic photo booth experiences for weddings, galas, and corporate events across Atlanta and the Southeast. British Phone Booth, 360 Video, Classic, Vintage & Mirror Booth.">
 <meta property="og:url" content="https://www.btbooth.com/">
 <meta property="og:image" content="https://www.btbooth.com/6a4dda6e-7202-4305-9bf7-038233b4d76b.png">
@@ -29,7 +29,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Black Tie Booth — Atlanta's Premier Photo Booth Experience">
+<meta name="twitter:title" content="Black Tie Booth: Atlanta's Premier Photo Booth Experience">
 <meta name="twitter:description" content="Five iconic photo booth experiences for weddings, galas, and corporate events across Atlanta and the Southeast.">
 <meta name="twitter:image" content="https://www.btbooth.com/6a4dda6e-7202-4305-9bf7-038233b4d76b.png">
 
@@ -773,7 +773,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
 /* ── MICRO-INTERACTIONS ──────────────────────────────── */
 
-/* Pricing card — gold border trace on hover */
+/* Pricing card gold border trace on hover */
 .p-card { overflow: hidden; }
 .p-card::before {
   content: ''; position: absolute; inset: 0; border-radius: 20px; pointer-events: none;
@@ -788,12 +788,12 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   background: linear-gradient(135deg, rgba(212,175,106,0) 0%, rgba(212,175,106,0.9) 50%, rgba(212,175,106,0) 100%) border-box;
 }
 
-/* Pricing price — subtle scale on card hover */
+/* Pricing price subtle scale on card hover */
 .p-card:hover .p-price { transform: scale(1.03); }
 .p-price { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); transform-origin: left center; }
 .p-card.featured .p-price { transform-origin: left center; }
 
-/* Pricing CTA — arrow slides in on hover */
+/* Pricing CTA arrow slides in on hover */
 .p-cta { display: flex; align-items: center; justify-content: center; gap: 0; position: relative; overflow: hidden; }
 .p-cta-arrow {
   display: inline-flex; align-items: center;
@@ -804,7 +804,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 .p-cta-arrow svg { width: 13px; height: 13px; flex-shrink: 0; }
 .p-card:hover .p-cta-arrow { width: 21px; opacity: 1; margin-left: 0.375rem; }
 
-/* Testimonial card — ghost opening-quote + gold left accent */
+/* Testimonial card ghost opening-quote + gold left accent */
 .t-card { position: relative; }
 .t-card::before {
   content: '\201C'; position: absolute; top: 1rem; right: 1.25rem;
@@ -824,7 +824,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 .t-av { transition: border-color 0.3s, box-shadow 0.3s; }
 .t-card:hover .t-av { border-color: rgba(212,175,106,0.55); box-shadow: 0 0 0 3px rgba(212,175,106,0.1); }
 
-/* Form input — gold underline sweeps from left on focus */
+/* Form input gold underline sweeps from left on focus */
 .fin-wrap, .fta-wrap { position: relative; }
 .fin, .fta { border-bottom: 1px solid transparent; }
 .fin::after, .fta::after { display: none; } /* pseudo not on inputs, use wrapper */
@@ -839,7 +839,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 }
 .fg:focus-within::after { transform: scaleX(1); }
 
-/* Submit button — arrow slides in on hover */
+/* Submit button arrow slides in on hover */
 .fsubmit { display: flex; align-items: center; justify-content: center; gap: 0; }
 .fsubmit-arrow {
   display: inline-flex; align-items: center;
@@ -849,13 +849,13 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 .fsubmit-arrow svg { width: 14px; height: 14px; flex-shrink: 0; }
 .fsubmit:not(:disabled):hover .fsubmit-arrow { width: 22px; opacity: 1; margin-left: 0.5rem; }
 
-/* Booking perks — icon nudge on hover */
+/* Booking perks icon nudge on hover */
 .booking-perks li { transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); cursor: default; }
 .booking-perks li:hover { transform: translateX(4px); }
 .booking-perks li svg { transition: color 0.2s; }
 .booking-perks li:hover svg { color: #f5c96e; }
 
-/* CTA gold text — shimmer sweep on reveal */
+/* CTA gold text shimmer sweep on reveal */
 @keyframes goldShimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
@@ -869,7 +869,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   background-position: -200% center;
 }
 
-/* Footer links — underline slides from left */
+/* Footer links underline slides from left */
 .f-col a { position: relative; display: inline-block; }
 .f-col a::after {
   content: ''; position: absolute; bottom: -1px; left: 0;
@@ -880,7 +880,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 }
 .f-col a:hover::after { transform: scaleX(1); }
 
-/* Stat values — count-up (JS driven, just ensure smooth rendering) */
+/* Stat values count-up (JS driven, just ensure smooth rendering) */
 .spec-val { font-variant-numeric: tabular-nums; }
 
 /* ── MOBILE FLOAT ─────────────────────────────────────── */
@@ -996,7 +996,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <div style="position:relative;z-index:2;text-align:center;padding:7rem 28px 4rem;width:100%;max-width:680px;">
     <p class="eyebrow reveal">The Video Wall</p>
     <h2 class="headline reveal d1" style="color:#f5f5f7;margin-top:0.75rem;font-size:clamp(2rem,6vw,4.5rem);line-height:1.08;">The room transforms.<br><span style="color:var(--gold);">So does the night.</span></h2>
-    <p class="subhead reveal d2" style="color:rgba(245,245,247,0.72);margin-top:1.5rem;font-size:clamp(0.9rem,2.2vw,1.05rem);line-height:1.7;">Floor-to-ceiling LED panels shaped entirely around your vision — custom palettes, your story on full display, and an ambiance that wraps every guest in the warmth of the evening from the first look to the last dance.</p>
+    <p class="subhead reveal d2" style="color:rgba(245,245,247,0.72);margin-top:1.5rem;font-size:clamp(0.9rem,2.2vw,1.05rem);line-height:1.7;">Floor-to-ceiling LED panels shaped entirely around your vision, with custom palettes, your story on full display, and an ambiance that wraps every guest in the warmth of the evening from the first look to the last dance.</p>
     <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;" class="reveal d3">
       <a href="#booking" class="pill pill-blue">Reserve Your Date <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:14px;height:14px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       <a href="experiences.html#story-videowall" class="pill pill-ghost">See the Experience</a>
@@ -1009,7 +1009,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <div style="max-width:1100px;margin:0 auto;">
     <p class="eyebrow reveal" style="text-align:center;">Six Signature Experiences</p>
     <h2 class="headline reveal d1" style="text-align:center;color:#f5f5f7;margin-bottom:0.75rem;">Every occasion.<br>One unforgettable booth.</h2>
-    <p class="subhead reveal d2" style="text-align:center;color:var(--white-dim);max-width:600px;margin:0 auto 3.5rem;">From intimate weddings to corporate galas — each experience is designed to become the most talked-about moment of the night.</p>
+    <p class="subhead reveal d2" style="text-align:center;color:var(--white-dim);max-width:600px;margin:0 auto 3.5rem;">From intimate weddings to corporate galas. Each experience is designed to become the most talked-about moment of the night.</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;" class="reveal d2">
 
@@ -1096,7 +1096,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <div class="map-header">
       <p class="eyebrow reveal">Where We Go</p>
       <h2 class="headline reveal d1" style="color:#f5f5f7">We travel to<br>your event.</h2>
-      <p class="subhead reveal d2" style="color:var(--white-dim);max-width:480px;margin:1rem auto 0">Serving Atlanta and beyond — from the Carolinas to Texas, we bring the full Black Tie Booth experience wherever your event takes place.</p>
+      <p class="subhead reveal d2" style="color:var(--white-dim);max-width:480px;margin:1rem auto 0">Serving Atlanta and beyond, from the Carolinas to Texas, we bring the full Black Tie Booth experience wherever your event takes place.</p>
     </div>
     <div id="btb-map" class="reveal"></div>
     <div class="city-grid reveal d1">
@@ -1192,7 +1192,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <div class="booking-left">
       <p class="eyebrow reveal">Get In Touch</p>
       <h2 class="headline reveal d1">Reserve your date.</h2>
-      <p class="subhead text-dim reveal d2">Atlanta's calendar fills fast. Reach out early — we'll handle every detail from there.</p>
+      <p class="subhead text-dim reveal d2">Atlanta's calendar fills fast. Reach out early and we'll handle every detail from there.</p>
       <ul class="booking-perks reveal d3">
         <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.75l1.75 1.25"/></svg>Response within 2 business hours</li>
         <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom quotes for every event</li>
@@ -1239,7 +1239,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <!-- CTA -->
 <section id="cta" data-theme="dark" aria-label="Call to action">
   <div class="cta-h reveal">Weddings. Galas.<br><span class="text-gold cta-gold-shimmer">Corporate events done right.</span></div>
-  <p class="cta-sub reveal d1">Whether it's 50 guests or 5,000 — we bring the experience your event deserves. Dates fill quickly.</p>
+  <p class="cta-sub reveal d1">Whether it's 50 guests or 5,000. We bring the experience your event deserves. Dates fill quickly.</p>
   <div class="cta-btns reveal d2">
     <a href="#booking" class="pill pill-blue">Book Your Date</a>
     <a href="tel:+14045550100" class="pill pill-ghost">Call Us</a>
@@ -1351,7 +1351,7 @@ form.addEventListener('submit', async e => {
   fBtn.disabled = true;
 
   if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    // Demo mode: no Formspree ID yet — simulate success
+    // Demo mode: no Formspree ID yet, simulate success
     setTimeout(() => { form.style.display = 'none'; fSuccess.style.display = 'flex'; }, 900);
     return;
   }
