@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packages | Black Tie Booth</title>
+<meta name="description" content="Photo booth packages for every occasion. Choose from Essential, Signature, and Black Tie tiers for our British Phone Booth, 360 Video, Classic, Vintage, Mirror Booth, and Video Wall experiences.">
+<link rel="canonical" href="https://www.btbooth.com/packages.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #D4AF6A; --gold-dim: rgba(212,175,106,0.7);
+  --white: #f5f5f7; --white-dim: rgba(245,245,247,0.6);
+  --dark: #000000; --surface: #161617; --surface2: #1d1d1f;
+  --mid: #6e6e73; --light-bg: #f5f5f7; --light-surface: #fbfbfd;
+  --dark-text: #1d1d1f; --dark-mid: #6e6e73;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--dark); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+
+/* NAV */
+#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; background: rgba(22,22,23,0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+.nav-logo { font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; color: var(--white); }
+.nav-links { display: flex; gap: 1.75rem; list-style: none; }
+.nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: -0.01em; color: var(--white-dim); transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-cta { font-size: 0.75rem; font-weight: 400; letter-spacing: -0.01em; color: var(--gold); transition: color 0.2s; }
+.nav-cta:hover { color: #f5c96e; }
+.nav-burger { display: none; flex-direction: column; gap: 4.5px; padding: 5px; }
+.nav-burger span { display: block; width: 18px; height: 1.5px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+.nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 734px) { .nav-links, .nav-cta { display: none; } .nav-burger { display: flex; } }
+.mob-nav { display: none; position: fixed; inset: 0; z-index: 998; background: var(--surface); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+.mob-nav.open { display: flex; }
+.mob-nav a { font-size: 1.5rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; }
+.mob-nav a:hover { color: var(--gold); }
+
+/* TYPOGRAPHY */
+.headline { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; }
+.eyebrow { font-size: clamp(0.6875rem, 1.5vw, 0.8125rem); font-weight: 400; letter-spacing: 0.01em; color: var(--gold); margin-bottom: 0.875rem; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.18s; } .d3 { transition-delay: 0.26s; } .d4 { transition-delay: 0.34s; }
+
+/* PILLS */
+.pill { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; padding: 0.625rem 1.375rem; border-radius: 980px; transition: background 0.2s, color 0.2s, transform 0.15s; cursor: pointer; }
+.pill:hover { transform: scale(1.01); }
+.pill-blue { background: #000; color: var(--gold); border: 1px solid rgba(212,175,106,0.3); }
+.pill-blue:hover { background: #111; }
+.pill-ghost { background: rgba(255,255,255,0.1); color: #f5f5f7; }
+.pill-ghost:hover { background: rgba(255,255,255,0.18); }
+
+/* PAGE HERO */
+.page-hero { min-height: 38svh; background: var(--dark); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 96px 24px 64px; position: relative; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,106,0.07) 0%, transparent 70%); pointer-events: none; }
+.page-hero-content { position: relative; z-index: 2; max-width: 640px; }
+.page-hero-content p { font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: 300; color: var(--white-dim); margin-top: 1rem; line-height: 1.6; }
+
+/* EXPERIENCE TABS */
+.pkg-tabs { position: sticky; top: 48px; z-index: 90; background: rgba(22,22,23,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto; scrollbar-width: none; }
+.pkg-tabs::-webkit-scrollbar { display: none; }
+.pkg-tabs-inner { display: flex; gap: 0; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.pkg-tab { font-size: 0.75rem; font-weight: 400; letter-spacing: -0.01em; color: var(--mid); padding: 0.875rem 1.25rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; cursor: pointer; background: none; }
+.pkg-tab:hover { color: var(--white); }
+.pkg-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* EXPERIENCE SECTION */
+.pkg-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+.pkg-section-header { text-align: center; margin-bottom: 56px; }
+.pkg-section-header h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 600; letter-spacing: -0.04em; color: var(--white); }
+.pkg-section-header p { font-size: clamp(0.9375rem, 2vw, 1.0625rem); font-weight: 300; color: var(--white-dim); margin-top: 0.75rem; line-height: 1.65; max-width: 540px; margin-left: auto; margin-right: auto; }
+.pkg-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 0 24px; }
+
+/* PACKAGE CARDS */
+.pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .pkg-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+
+.pkg-card { background: var(--surface); border-radius: 20px; padding: 2.25rem 2rem; position: relative; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; display: flex; flex-direction: column; }
+.pkg-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); }
+.pkg-card.featured { background: var(--surface2); border-color: rgba(212,175,106,0.25); }
+.pkg-card.featured::before { content: ''; position: absolute; inset: 0; border-radius: 20px; border: 1px solid rgba(212,175,106,0.3); pointer-events: none; }
+
+.pkg-badge { display: inline-block; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: var(--gold); color: #000; padding: 0.25rem 0.75rem; border-radius: 980px; margin-bottom: 1rem; }
+.pkg-tier { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.pkg-price { font-size: 3rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--white); margin-bottom: 0.25rem; }
+.pkg-price span { font-size: 1.25rem; font-weight: 400; vertical-align: top; margin-top: 0.5rem; display: inline-block; }
+.pkg-duration { font-size: 0.8125rem; font-weight: 300; color: var(--mid); margin-bottom: 1.75rem; }
+.pkg-divider-inner { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 1.75rem; }
+.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; flex: 1; }
+.pkg-features li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.875rem; font-weight: 300; color: var(--mid); line-height: 1.45; }
+.pkg-features li svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.pkg-cta { display: block; width: 100%; padding: 0.8125rem 1rem; border-radius: 980px; text-align: center; font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; background: rgba(255,255,255,0.07); color: var(--white); transition: background 0.2s; }
+.pkg-cta:hover { background: rgba(255,255,255,0.13); }
+.pkg-card.featured .pkg-cta { background: var(--gold); color: #000; }
+.pkg-card.featured .pkg-cta:hover { background: #e0bc70; }
+
+/* ADD-ONS */
+.addons-section { background: var(--surface); padding: 80px 24px; }
+.addons-inner { max-width: 900px; margin: 0 auto; }
+.addons-header { text-align: center; margin-bottom: 48px; }
+.addons-header h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.04em; color: var(--white); }
+.addons-header p { font-size: 0.9375rem; font-weight: 300; color: var(--white-dim); margin-top: 0.75rem; }
+.addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.addon-item { background: var(--surface2); border-radius: 14px; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.2s; }
+.addon-item:hover { border-color: rgba(212,175,106,0.2); }
+.addon-name { font-size: 0.9375rem; font-weight: 400; color: var(--white); }
+.addon-desc { font-size: 0.75rem; font-weight: 300; color: var(--mid); margin-top: 0.2rem; }
+.addon-price { font-size: 0.9375rem; font-weight: 500; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
+
+/* NOTES */
+.notes-section { padding: 64px 24px; max-width: 720px; margin: 0 auto; }
+.notes-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.notes-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
+.notes-list li svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; margin-top: 3px; }
+
+/* CTA BANNER */
+.cta-banner { background: var(--surface2); padding: 80px 24px; text-align: center; }
+.cta-banner h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; color: var(--white); }
+.cta-banner p { font-size: clamp(0.9375rem, 2vw, 1.1rem); font-weight: 300; color: var(--white-dim); margin-top: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-banner-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.f-brand { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.02em; color: var(--white); margin-bottom: 0.625rem; display: block; }
+.f-tagline { font-size: 0.8125rem; font-weight: 300; color: var(--mid); line-height: 1.55; }
+.f-col h4 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--mid); margin-bottom: 1rem; }
+.f-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+.f-col a { font-size: 0.8125rem; font-weight: 300; color: var(--white-dim); transition: color 0.2s; }
+.f-col a:hover { color: var(--white); }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+.f-copy { font-size: 0.75rem; color: var(--mid); }
+.f-atl { font-size: 0.75rem; color: var(--mid); display: flex; align-items: center; gap: 0.35rem; }
+
+/* CHECK ICON */
+.check { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="experiences.html" onclick="closeMob()">Experiences</a>
+  <a href="packages.html" onclick="closeMob()">Packages</a>
+  <a href="index.html#booking" onclick="closeMob()">Book Now</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
+  <ul class="nav-links" role="list">
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="packages.html" class="active">Packages</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li>
+  </ul>
+  <a href="index.html#booking" class="nav-cta">Book Now</a>
+  <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <p class="eyebrow reveal">Packages</p>
+    <h1 class="headline reveal d1" style="color:var(--white);">Everything your<br>event deserves.</h1>
+    <p class="reveal d2">Three tiers for every occasion. Every package includes a dedicated attendant, unlimited sessions, and same-night digital delivery. Choose your experience below.</p>
+  </div>
+</section>
+
+<!-- TABS -->
+<div class="pkg-tabs" role="tablist" aria-label="Experiences">
+  <div class="pkg-tabs-inner">
+    <button class="pkg-tab active" onclick="scrollTo('vintage')" role="tab">Vintage Booth</button>
+    <button class="pkg-tab" onclick="scrollTo('classic')" role="tab">Classic Booth</button>
+    <button class="pkg-tab" onclick="scrollTo('phone')" role="tab">Phone Booth</button>
+    <button class="pkg-tab" onclick="scrollTo('360')" role="tab">360 Video Booth</button>
+    <button class="pkg-tab" onclick="scrollTo('mirror')" role="tab">Mirror Booth</button>
+    <button class="pkg-tab" onclick="scrollTo('videowall')" role="tab">Video Wall</button>
+  </div>
+</div>
+
+
+<!-- ── 01 VINTAGE PHOTO BOOTH ─────────────────────────── -->
+<div id="vintage">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">Vintage Photo Booth</p>
+      <h2 class="reveal d1">Studio quality. Event energy.</h2>
+      <p class="reveal d2">Professional DSLR camera, studio grade lighting, and a custom backdrop. Open air and endlessly adaptable. The most photogenic addition to any wedding or gala floor.</p>
+    </div>
+    <div class="pkg-grid">
+
+      <!-- ESSENTIAL -->
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>750</div>
+        <p class="pkg-duration">Up to 2 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited digital images</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard photo template</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Sharing station — text, email and QR code</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Studio grade lighting</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery link within 48 hours</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+
+      <!-- SIGNATURE -->
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>850</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded tap to start screen</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom template design</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Choice of backdrop color</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+
+      <!-- BLACK TIE -->
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price"><span>$</span>950</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited GIFs and Boomerangs</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>30 second guest video messages</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Two custom template designs</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Glam filter option included</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Black Tie</a>
+      </div>
+    </div>
+  </section>
+  <div class="pkg-divider"></div>
+</div>
+
+
+<!-- ── 02 CLASSIC PHOTO BOOTH ─────────────────────────── -->
+<div id="classic">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">Classic Photo Booth</p>
+      <h2 class="reveal d1">Sleek. Ring lit. All night.</h2>
+      <p class="reveal d2">Modern open air design with a flattering ring light and touch screen interface. The booth your guests will line up for from the first song to the last dance.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>750</div>
+        <p class="pkg-duration">Up to 2 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited digital images</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Oval ring light setup</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard photo template</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Sharing station — text, email and QR code</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 48 hours</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>850</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded tap to start screen</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom template design</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Glam filter option</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price"><span>$</span>950</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited GIFs and Boomerangs</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>30 second guest video messages</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Two custom template designs</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Black Tie</a>
+      </div>
+    </div>
+  </section>
+  <div class="pkg-divider"></div>
+</div>
+
+
+<!-- ── 03 BRITISH PHONE BOOTH ─────────────────────────── -->
+<div id="phone">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">British Phone Booth</p>
+      <h2 class="reveal d1">The centerpiece they remember.</h2>
+      <p class="reveal d2">Garden elegance meets photo magic. An iconic white telephone box with florals, neon, and candle lanterns. The most photographed piece at any wedding.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>850</div>
+        <p class="pkg-duration">Up to 2 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited digital images</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Audio phone recording</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard photo template</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Sharing station — text, email and QR code</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 48 hours</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>999</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Video phone option — audio and video messages</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded tap to start screen</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom template design</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Floral styling included</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>199</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Neon sign included</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Candle lantern styling</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital print keepsakes</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Black Tie</a>
+      </div>
+    </div>
+  </section>
+  <div class="pkg-divider"></div>
+</div>
+
+
+<!-- ── 04 360 VIDEO BOOTH ─────────────────────────────── -->
+<div id="360">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">360 Video Booth</p>
+      <h2 class="reveal d1">Slow motion. Shared forever.</h2>
+      <p class="reveal d2">Cinematic slow motion clips your guests will share for weeks. A rotating arm, studio lighting, and a moment that plays back like a movie scene.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>950</div>
+        <p class="pkg-duration">Up to 2 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited 360 video sessions</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Slow motion cinematic clips</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard branded overlay</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Instant share via text and QR</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>LED platform</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>150</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded video overlay</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Music sync option</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Red carpet rope and stanchion</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 24 hours</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>350</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Confetti cannon add on</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Fog machine effect</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Two custom overlay designs</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Black Tie</a>
+      </div>
+    </div>
+  </section>
+  <div class="pkg-divider"></div>
+</div>
+
+
+<!-- ── 05 MIRROR BOOTH ────────────────────────────────── -->
+<div id="mirror">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">Mirror Booth</p>
+      <h2 class="reveal d1">Touch it. Sign it. Take it home.</h2>
+      <p class="reveal d2">A full length magic mirror guests tap, sign, and customize right on the screen. Elegant, modern, and endlessly entertaining. The showpiece of any corporate event or black tie reception.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>850</div>
+        <p class="pkg-duration">Up to 2 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Unlimited digital sessions</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Touchscreen signature and emoji</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard animated screen design</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Sharing via text, email and QR</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>999</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded screen animation</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom photo template</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Red carpet and stanchion</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>199</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>GIF and Boomerang mode</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Instant print option</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Guest memory book</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Black Tie</a>
+      </div>
+    </div>
+  </section>
+  <div class="pkg-divider"></div>
+</div>
+
+
+<!-- ── 06 VIDEO WALL ──────────────────────────────────── -->
+<div id="videowall">
+  <section class="pkg-section">
+    <div class="pkg-section-header">
+      <p class="eyebrow reveal">Video Wall</p>
+      <h2 class="reveal d1">The room transforms.<br>So does the night.</h2>
+      <p class="reveal d2">An 8 foot LED wall shaped around your vision. Custom palettes, your brand on full display, and an ambiance that defines the entire room.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <p class="pkg-tier">Essential</p>
+        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>500</div>
+        <p class="pkg-duration">Up to 3 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>8 foot LED wall display</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard content package</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Static or looping display</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated setup technician</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Essential</a>
+      </div>
+      <div class="pkg-card featured reveal d1">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-tier">Signature</p>
+        <div class="pkg-price"><span>$</span>2<span style="font-size:1.5rem;vertical-align:middle;">,</span>000</div>
+        <p class="pkg-duration">Up to 4 hours</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom branded content design</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom color palette matching</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Seating chart display option</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Live social feed integration</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Book Signature</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">Black Tie</p>
+        <div class="pkg-price" style="font-size:2.25rem;">Custom</div>
+        <p class="pkg-duration">Full event coverage</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Multi panel configuration</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Full brand activation setup</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Live event content switching</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated on site tech team</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ADD-ONS -->
+<section class="addons-section">
+  <div class="addons-inner">
+    <div class="addons-header">
+      <p class="eyebrow reveal">Add-Ons</p>
+      <h2 class="headline reveal d1" style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--white);">Elevate your package.</h2>
+      <p class="reveal d2">Available with any experience. Add what your event needs.</p>
+    </div>
+    <div class="addons-grid reveal d1">
+      <div class="addon-item">
+        <div><p class="addon-name">Instant Prints</p><p class="addon-desc">2x6 or 4x6 photo strips</p></div>
+        <p class="addon-price">From $249</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Props Package</p><p class="addon-desc">Curated luxury prop collection</p></div>
+        <p class="addon-price">From $129</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Guest Memory Book</p><p class="addon-desc">Printed keepsake album</p></div>
+        <p class="addon-price">$39</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Uplighting</p><p class="addon-desc">Ambient color wash lighting</p></div>
+        <p class="addon-price">$99</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Neon Sign</p><p class="addon-desc">Custom phrase or event name</p></div>
+        <p class="addon-price">$59</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Booth Wrapping</p><p class="addon-desc">Custom branded vinyl wrap</p></div>
+        <p class="addon-price">From $499</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Slo-Mo and Boomerang</p><p class="addon-desc">Social ready video clips</p></div>
+        <p class="addon-price">$39</p>
+      </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Glam Filter</p><p class="addon-desc">Soft beauty filter mode</p></div>
+        <p class="addon-price">$49</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NOTES -->
+<section class="notes-section">
+  <p class="eyebrow reveal" style="text-align:center;">Good to Know</p>
+  <ul class="notes-list reveal d1">
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>2 hours is recommended for up to 50 guests. For 100 or more guests we recommend 3 hours or more.</li>
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Instant prints are available as an add on and are not included in base packages.</li>
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Travel fees may apply for events beyond 30 miles of Atlanta, GA.</li>
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Holiday rates apply for events on public holidays.</li>
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Flexible payment accepted. Installment plans available on request.</li>
+    <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>All packages include professional setup, breakdown, and a dedicated onsite attendant for the full duration.</li>
+  </ul>
+</section>
+
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <p class="eyebrow reveal">Ready to Book?</p>
+  <h2 class="reveal d1">Your date is waiting.</h2>
+  <p class="reveal d2">Atlanta's calendar fills fast. Reach out early and we'll handle every detail from there.</p>
+  <div class="cta-banner-btns reveal d3">
+    <a href="index.html#booking" class="pill pill-blue">Request a Quote</a>
+    <a href="experiences.html" class="pill pill-ghost">View Experiences</a>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div>
+      <span class="f-brand">Black Tie Booth</span>
+      <p class="f-tagline">Atlanta's most elegant photo booth experience. Creating unforgettable moments since 2018.</p>
+    </div>
+    <div class="f-col"><h4>Experiences</h4><ul><li><a href="experiences.html">British Phone Booth</a></li><li><a href="experiences.html">360 Video Booth</a></li><li><a href="experiences.html">Classic Photo Booth</a></li><li><a href="experiences.html">Vintage Photo Booth</a></li><li><a href="experiences.html">Mirror Booth</a></li><li><a href="experiences.html#story-videowall">Video Wall</a></li></ul></div>
+    <div class="f-col"><h4>Packages</h4><ul><li><a href="packages.html#vintage">Vintage Booth</a></li><li><a href="packages.html#classic">Classic Booth</a></li><li><a href="packages.html#phone">Phone Booth</a></li><li><a href="packages.html#360">360 Video</a></li><li><a href="packages.html#mirror">Mirror Booth</a></li><li><a href="packages.html#videowall">Video Wall</a></li></ul></div>
+    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="index.html#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="f-copy">&copy; 2026 Black Tie Booth. All rights reserved.</p>
+    <div class="f-atl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="12" height="12"><path d="M8 1a5 5 0 00-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 00-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>Made with love in Atlanta, GA</div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const mobNav = document.getElementById('mobNav');
+function closeMob() { mobNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+burger.addEventListener('click', () => {
+  const open = !mobNav.classList.contains('open');
+  mobNav.classList.toggle('open', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMob(); });
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 96; window.scrollTo({ top, behavior: 'smooth' }); }
+  document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReduced) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+
+// Highlight active tab on scroll
+const sections = ['vintage','classic','phone','360','mirror','videowall'];
+const tabs = document.querySelectorAll('.pkg-tab');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  tabs.forEach((t, i) => t.classList.toggle('active', sections[i] === current));
+}, { passive: true });
+</script>
+</body>
+</html>
