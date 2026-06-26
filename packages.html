@@ -189,12 +189,12 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
 <!-- TABS -->
 <div class="pkg-tabs" role="tablist" aria-label="Experiences">
   <div class="pkg-tabs-inner">
-    <button class="pkg-tab active" onclick="scrollTo('vintage')" role="tab">Vintage Booth</button>
-    <button class="pkg-tab" onclick="scrollTo('classic')" role="tab">Classic Booth</button>
-    <button class="pkg-tab" onclick="scrollTo('phone')" role="tab">Phone Booth</button>
-    <button class="pkg-tab" onclick="scrollTo('360')" role="tab">360 Video Booth</button>
-    <button class="pkg-tab" onclick="scrollTo('mirror')" role="tab">Mirror Booth</button>
-    <button class="pkg-tab" onclick="scrollTo('videowall')" role="tab">Video Wall</button>
+    <button class="pkg-tab active" onclick="scrollToSection('vintage',this)" role="tab">Vintage Booth</button>
+    <button class="pkg-tab" onclick="scrollToSection('classic',this)" role="tab">Classic Booth</button>
+    <button class="pkg-tab" onclick="scrollToSection('phone',this)" role="tab">Phone Booth</button>
+    <button class="pkg-tab" onclick="scrollToSection('360',this)" role="tab">360 Video Booth</button>
+    <button class="pkg-tab" onclick="scrollToSection('mirror',this)" role="tab">Mirror Booth</button>
+    <button class="pkg-tab" onclick="scrollToSection('videowall',this)" role="tab">Video Wall</button>
   </div>
 </div>
 
@@ -677,11 +677,11 @@ burger.addEventListener('click', () => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMob(); });
 
-function scrollTo(id) {
+function scrollToSection(id, btn) {
   const el = document.getElementById(id);
   if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 96; window.scrollTo({ top, behavior: 'smooth' }); }
   document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
