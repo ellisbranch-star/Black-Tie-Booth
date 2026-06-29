@@ -79,7 +79,8 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 /* EXPERIENCE SECTION */
 .pkg-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
 .pkg-section-header { text-align: center; margin-bottom: 56px; }
-.pkg-section-header h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 400; letter-spacing: -0.02em; color: var(--white); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
+.pkg-section-header .eyebrow { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; letter-spacing: -0.02em; color: var(--white); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; margin-bottom: 0.5rem; }
+.pkg-section-header h2 { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300; letter-spacing: 0.01em; color: var(--gold); font-family: inherit; font-style: normal; }
 .pkg-section-header p { font-size: clamp(0.9375rem, 2vw, 1.0625rem); font-weight: 300; color: var(--white-dim); margin-top: 0.75rem; line-height: 1.65; max-width: 540px; margin-left: auto; margin-right: auto; }
 .pkg-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 0 24px; }
 
@@ -160,6 +161,8 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   <a href="index.html" onclick="closeMob()">Home</a>
   <a href="experiences.html" onclick="closeMob()">Experiences</a>
   <a href="packages.html" onclick="closeMob()">Packages</a>
+  <a href="gallery.html" onclick="closeMob()">Gallery</a>
+  <a href="seating-chart-service.html" onclick="closeMob()">Seating Chart</a>
   <a href="index.html#booking" onclick="closeMob()">Book Now</a>
 </div>
 
@@ -169,6 +172,8 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   <ul class="nav-links" role="list">
     <li><a href="experiences.html">Experiences</a></li>
     <li><a href="packages.html" class="active">Packages</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="seating-chart-service.html">Seating Chart</a></li>
     <li><a href="index.html#testimonials">Reviews</a></li>
   </ul>
   <a href="index.html#booking" class="nav-cta">Book Now</a>
@@ -529,7 +534,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
       <h2 class="reveal d1">The room transforms.<br>So does the night.</h2>
       <p class="reveal d2">An 8 foot LED wall shaped around your vision. Custom palettes, your brand on full display, and an ambiance that defines the entire room.</p>
     </div>
-    <div class="pkg-grid" style="grid-template-columns: repeat(2,1fr); max-width: 740px; margin: 0 auto;">
+    <div class="pkg-grid" style="grid-template-columns: repeat(3,1fr); max-width: 1060px; margin: 0 auto;">
       <div class="pkg-card reveal">
         <p class="pkg-tier">1 Screen</p>
         <div class="pkg-price"><span>$</span>600</div>
@@ -547,7 +552,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
         <p class="pkg-tier">2 Screens</p>
-        <div class="pkg-price"><span>$</span>1<span style="font-size:1.5rem;vertical-align:middle;">,</span>000</div>
+        <div class="pkg-price" style="font-size:clamp(1.5rem,3vw,2rem);padding:1rem 0 0.25rem;letter-spacing:-0.01em;">Custom Quote</div>
         <p class="pkg-duration">Full event coverage</p>
         <div class="pkg-divider-inner"></div>
         <ul class="pkg-features">
@@ -555,6 +560,22 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom content display</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Static or looping visuals</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dual screen coordination</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Décor floor skirt to conceal base of screens</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
+        </ul>
+        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+      </div>
+      <div class="pkg-card reveal d2">
+        <p class="pkg-tier">3 Screens</p>
+        <div class="pkg-price" style="font-size:clamp(1.5rem,3vw,2rem);padding:1rem 0 0.25rem;letter-spacing:-0.01em;">Custom Quote</div>
+        <p class="pkg-duration">Full event coverage</p>
+        <div class="pkg-divider-inner"></div>
+        <ul class="pkg-features">
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>3 LED wall panels</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom content display</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Static or looping visuals</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Full room triple-screen coordination</li>
+          <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Panoramic or independent content per screen</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Décor floor skirt to conceal base of screens</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
         </ul>
