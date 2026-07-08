@@ -17,7 +17,12 @@
       "Bash(curl -fsSL https://nodejs.org/dist/v22.16.0/node-v22.16.0-darwin-arm64.tar.gz -o /tmp/node.tar.gz)",
       "Bash(tar -xzf /tmp/node.tar.gz -C /tmp/)",
       "Read(//tmp/node-v22.16.0-darwin-arm64/**)",
-      "Bash(cp \"/Users/ellisbranch/Downloads/Black Tie Booth Assets /5.png\" \"/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/logo.png\")"
+      "Bash(cp \"/Users/ellisbranch/Downloads/Black Tie Booth Assets /5.png\" \"/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/logo.png\")",
+      "Bash(mv '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/360 Booth ' '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/360 Video Booth')",
+      "Bash(mv '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Classic Booth ' '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Classic Booth')",
+      "Bash(mv '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/LED Wall' '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Video Wall')",
+      "Bash(mv '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Phone Booth ' '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/British Phone Booth')",
+      "Bash(mv '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Stock Images ' '/Users/ellisbranch/Desktop/Black Tie Booth \\(Claude Code\\)/Stock Images')"
     ]
   }
 }

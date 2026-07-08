@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "black-tie-booth",
-      "runtimeExecutable": "/usr/bin/ruby",
-      "runtimeArgs": ["-run", "-e", "httpd", "--", "-p", "3000", "."],
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/ellisbranch/Desktop/Black Tie Booth (Claude Code)/serve.py"],
       "port": 3000
     }
   ]

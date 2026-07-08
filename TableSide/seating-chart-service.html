@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Seating Chart Display | Black Tie Booth</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:     #F4F1EC;
+  --off-white: #EBE8E2;
+  --surface:   #E2DED7;
+  --surface2:  #D8D4CC;
+  --border:    rgba(174,182,172,0.28);
+  --text:      #1a1c19;
+  --dim:       rgba(26,28,25,0.65);
+  --gold:      #4e6358;
+  --gold-d:    #3a4f45;
+  --gold-l:    #7a8f83;
+  --glow:      rgba(199,209,194,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ──────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+nav ul{list-style:none;display:flex;gap:36px}
+nav ul a{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
+nav ul a:hover{color:var(--text)}
+.nav-cta{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 24px;border:1px solid var(--gold);color:var(--gold);background:none;text-decoration:none;border-radius:4px;transition:all .2s}
+.nav-cta:hover{background:var(--gold);color:#fff}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 52px 80px;position:relative;overflow:hidden;background:linear-gradient(160deg,#F4F1EC 0%,#EBE8E2 60%,#E2DED7 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(174,182,172,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(174,182,172,0.45);padding:8px 22px;border-radius:40px;margin-bottom:40px;background:rgba(199,209,194,0.12)}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(5rem,12vw,11rem);font-weight:600;line-height:1;letter-spacing:-0.03em;margin-bottom:28px;color:var(--text)}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:600}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:300;color:var(--dim);max-width:600px;line-height:1.7;margin-bottom:52px}
+.hero-btns{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#fff;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:18px 40px;text-decoration:none;border-radius:4px;transition:all .25s}
+.btn-primary:hover{background:var(--gold-d);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);color:var(--dim);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;padding:18px 36px;text-decoration:none;border-radius:4px;transition:all .25s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim)}
+.hero-scroll span{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold-l),transparent)}
+
+/* ── DEMO FRAME ───────────────────────────────────────────────── */
+.demo-section{padding:80px 52px;background:var(--off-white)}
+.demo-intro{text-align:center;max-width:640px;margin:0 auto 52px}
+.demo-intro .eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.demo-intro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.15;margin-bottom:20px;color:var(--text)}
+.demo-intro p{font-size:15px;font-weight:300;color:var(--dim);line-height:1.75}
+.demo-frame-wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 80px rgba(184,150,46,0.12),0 4px 20px rgba(0,0,0,0.06)}
+.demo-label{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:42px;background:var(--gold);font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#fff;pointer-events:none}
+iframe.demo-frame{display:block;width:100%;height:720px;border:none;background:#faf8f4}
+.demo-caption{text-align:center;margin-top:22px;font-size:13px;color:var(--dim);letter-spacing:0.06em}
+
+/* ── HOW IT WORKS ─────────────────────────────────────────────── */
+.how{padding:120px 52px;background:var(--white)}
+.section-header{text-align:center;margin-bottom:80px}
+.section-header .eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.15;color:var(--text)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;max-width:1100px;margin:0 auto}
+.step{padding:52px 44px;background:var(--surface);position:relative;overflow:hidden}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);opacity:0;transition:opacity .4s}
+.step:hover::before{opacity:1}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(184,150,46,0.12);line-height:1;margin-bottom:28px;display:block}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:14px;color:var(--text)}
+.step p{font-size:14px;font-weight:300;color:var(--dim);line-height:1.75}
+
+/* ── FEATURES ─────────────────────────────────────────────────── */
+.features{padding:120px 52px;background:var(--off-white)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;max-width:1100px;margin:0 auto}
+.feat{padding:44px 40px;border:1px solid var(--border);border-radius:8px;background:var(--white);transition:border-color .3s,box-shadow .3s}
+.feat:hover{border-color:rgba(184,150,46,0.4);box-shadow:0 8px 32px rgba(184,150,46,0.08)}
+.feat-icon{width:48px;height:48px;border:1px solid rgba(184,150,46,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--gold);background:rgba(184,150,46,0.04)}
+.feat h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:12px;color:var(--text)}
+.feat p{font-size:14px;font-weight:300;color:var(--dim);line-height:1.75}
+
+/* ── PRICING ──────────────────────────────────────────────────── */
+.pricing-section{padding:120px 52px;background:var(--white)}
+.pricing-cards{display:flex;gap:24px;max-width:900px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.price-card{flex:1;min-width:260px;max-width:380px;padding:52px 44px;border:1px solid var(--border);border-radius:8px;text-align:center;position:relative;transition:all .3s;background:var(--white)}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(160deg,#edf0ec,#e2e8e0)}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;background:var(--gold);padding:4px 18px;border-radius:40px}
+.price-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:8px;color:var(--text)}
+.price-card .price{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--gold);margin:20px 0 4px}
+.price-card .price-note{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-bottom:36px}
+.price-card ul{list-style:none;text-align:left;margin-bottom:40px}
+.price-card li{font-size:14px;font-weight:300;color:var(--dim);padding:9px 0;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:flex-start;line-height:1.45}
+.price-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
+.btn-full{display:block;text-align:center;padding:16px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:all .25s}
+.btn-full.gold{background:var(--gold);color:#fff;font-weight:500}
+.btn-full.gold:hover{background:var(--gold-d)}
+.btn-full.outline{border:1px solid var(--border);color:var(--dim)}
+.btn-full.outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── SHOW SPECIAL ─────────────────────────────────────────────── */
+.show-banner{margin:0 52px 80px;background:linear-gradient(135deg,rgba(199,209,194,0.2) 0%,rgba(199,209,194,0.08) 100%);border:1px solid rgba(174,182,172,0.35);border-radius:12px;padding:52px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.show-banner .sb-text .eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.show-banner .sb-text h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;margin-bottom:16px;color:var(--text)}
+.show-banner .sb-text p{font-size:14px;font-weight:300;color:var(--dim);max-width:480px;line-height:1.75}
+.show-banner .sb-cta{flex-shrink:0}
+
+/* ── TESTIMONIAL / PULL QUOTE ─────────────────────────────────── */
+.quote-section{padding:100px 52px;background:var(--surface);text-align:center}
+.pull-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;font-style:italic;line-height:1.5;max-width:800px;margin:0 auto 32px;color:var(--text)}
+.quote-attr{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--dim)}
+
+/* ── CTA FOOTER ───────────────────────────────────────────────── */
+.cta-section{padding:120px 52px;background:linear-gradient(160deg,#EBE8E2 0%,#E2DED7 100%);text-align:center}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:300;margin-bottom:24px;line-height:1.1;color:var(--text)}
+.cta-section h2 em{font-style:italic;color:var(--gold)}
+.cta-section p{font-size:16px;font-weight:300;color:var(--dim);max-width:520px;margin:0 auto 48px;line-height:1.75}
+.cta-detail{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:52px;padding-top:52px;border-top:1px solid var(--border)}
+.cta-detail .di{text-align:center}
+.cta-detail .dv{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold)}
+.cta-detail .dk{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer{padding:40px 52px;border-top:1px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer .fl{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:0.1em}
+footer .fr{font-size:12px;color:var(--dim);letter-spacing:0.06em}
+footer .fr a{color:var(--dim);text-decoration:none;transition:color .2s}
+footer .fr a:hover{color:var(--gold)}
+
+@media(max-width:768px){
+  nav{padding:0 24px}
+  nav ul{display:none}
+  .hero,.demo-section,.how,.features,.pricing-section,.cta-section,.quote-section{padding-left:24px;padding-right:24px}
+  .show-banner{margin:0 24px 60px;padding:36px 28px}
+  .pricing-cards{flex-direction:column;align-items:center}
+  footer{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
+<nav>
+  <a href="../index.html" class="nav-logo">Black Tie Booth</a>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../packages.html">Experiences</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+  </ul>
+  <a href="mailto:info@BTBooth.com?subject=Seating Chart Add-On Inquiry" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-badge">Premium Add-On &nbsp;·&nbsp; Available for Any Event</div>
+  <h1><em>Tableside</em><br><span style="font-size:0.3em;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;font-style:normal;color:var(--dim);display:block;margin-top:0.5em;">by Black Tie Booth</span></h1>
+  <p class="hero-sub">A stunning touch-screen seating display that lets guests find their seat with a single tap. Elegant, effortless, and unforgettable.</p>
+  <div class="hero-btns">
+    <a href="#demo" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      See Live Demo
+    </a>
+    <a href="mailto:info@BTBooth.com?subject=Seating Chart Add-On Inquiry" class="btn-ghost">Get a Quote</a>
+  </div>
+  <div class="hero-scroll">Scroll<span></span></div>
+</section>
+
+<!-- ── LIVE DEMO ────────────────────────────────────────────────── -->
+<section class="demo-section" id="demo">
+  <div class="demo-intro">
+    <div class="eyebrow">Interactive Preview</div>
+    <h2>Try It Right Now</h2>
+    <p>This is the exact experience your guests will see. Tap any name below to watch the floor plan light up their table in real time.</p>
+  </div>
+  <div class="demo-frame-wrap">
+    <div class="demo-label">
+      <span>Live Demo · Ellis &amp; Shekinah Branch Wedding</span>
+      <span>Black Tie Booth &mdash; Digital Seating Display</span>
+    </div>
+    <iframe class="demo-frame" src="seating-chart-demo.html" title="Live Seating Chart Demo" loading="lazy"></iframe>
+  </div>
+  <p class="demo-caption">Tap any guest name &rarr; watch the floor plan highlight their exact seat &nbsp;&nbsp;|&nbsp;&nbsp; Navigate with the arrows &rarr; return with the back button</p>
+</section>
+
+<!-- ── HOW IT WORKS ─────────────────────────────────────────────── -->
+<section class="how" id="how">
+  <div class="section-header">
+    <div class="eyebrow">Simple Process</div>
+    <h2>Ready Before Your First Guest Arrives</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>Send Us Your Guest List</h3>
+      <p>Share your final seating chart — names, table assignments, and seat numbers — in any format. Spreadsheet, PDF, email, we handle it all.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>We Build Your Display</h3>
+      <p>Our team creates a fully custom digital display with your wedding colors, venue floor plan, and every guest loaded in alphabetically.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>Arrives Day-Of, Ready to Go</h3>
+      <p>We set up a dedicated touch screen at your venue entrance. Guests search their name, see their table highlighted on the map, and head straight in.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <h3>Keep It Forever</h3>
+      <p>After your event, you receive the seating display file — a beautiful keepsake and proof of every table at your reception.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ─────────────────────────────────────────────────── -->
+<section class="features" id="features">
+  <div class="section-header">
+    <div class="eyebrow">What's Included</div>
+    <h2>Every Detail, Considered</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+      <h3>Instant Name Search</h3>
+      <p>Guests tap their name and their table lights up on the floor plan instantly. No scrolling, no confusion at the entrance.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg>
+      </div>
+      <h3>Custom Venue Floor Plan</h3>
+      <p>We recreate your exact reception layout — every table, the dance floor, the stage, the bar — so guests get true spatial context.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Your Brand, Your Colors</h3>
+      <p>Every element — accent colors, fonts, couple's names, wedding date and venue — is personalized to match your aesthetic perfectly.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Works on Any Screen</h3>
+      <p>Optimized for large-format touch displays — 55", 65", 85" TVs — and tablets. No app download, no login, no Wi-Fi required.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Alphabetical A–Z Index</h3>
+      <p>A sidebar letter index lets guests jump straight to their initial. No one is waiting in line or feeling lost at your entrance.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Last-Minute Changes</h3>
+      <p>Guests switch tables the day before? Send us the update — we'll have the display corrected before your doors open.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ──────────────────────────────────────────────────── -->
+<section class="pricing-section" id="pricing">
+  <div class="section-header">
+    <div class="eyebrow">Add-On Pricing</div>
+    <h2>Pairs with Any Experience</h2>
+  </div>
+  <div class="pricing-cards">
+    <div class="price-card">
+      <h3>Seating Chart Only</h3>
+      <div class="price">$199</div>
+      <div class="price-note">standalone add-on</div>
+      <ul>
+        <li>Custom digital seating display</li>
+        <li>Up to 150 guests</li>
+        <li>Standard venue floor layout</li>
+        <li>Alphabetical guest search</li>
+        <li>1 revision included</li>
+        <li>File delivered day-of</li>
+      </ul>
+      <a href="mailto:info@BTBooth.com?subject=Seating Chart Add-On - $199" class="btn-full outline">Get Started</a>
+    </div>
+    <div class="price-card featured">
+      <h3>With Any Booth Package</h3>
+      <div class="price">$149</div>
+      <div class="price-note">bundled add-on pricing</div>
+      <ul>
+        <li>Custom digital seating display</li>
+        <li>Up to 250 guests</li>
+        <li>Fully custom venue floor plan</li>
+        <li>Matching brand colors &amp; fonts</li>
+        <li>Unlimited revisions (pre-event)</li>
+        <li>On-site setup by our team</li>
+        <li>File delivered as keepsake</li>
+      </ul>
+      <a href="mailto:info@BTBooth.com?subject=Seating Chart + Booth Package Bundle" class="btn-full gold">Add to My Package</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHOW SPECIAL BANNER ─────────────────────────────────────── -->
+<div class="show-banner" id="show-special">
+  <div class="sb-text">
+    <div class="eyebrow">Georgia Bridal &amp; Wedding Show &nbsp;·&nbsp; November 1, 2026</div>
+    <h3>Show Special: Add the Seating Chart for Free</h3>
+    <p>Book any Black Tie Booth experience at the Georgia Bridal Show and receive the Digital Seating Chart Display as a complimentary add-on — a $149 value included at no charge. Available for bookings made at the show only.</p>
+  </div>
+  <div class="sb-cta">
+    <a href="mailto:info@BTBooth.com?subject=Bridal Show Special - Seating Chart Add-On" class="btn-primary" style="white-space:nowrap">Claim This Offer</a>
+  </div>
+</div>
+
+<!-- ── PULL QUOTE ───────────────────────────────────────────────── -->
+<section class="quote-section">
+  <p class="pull-quote">"Our guests couldn't stop talking about it. Instead of a chaotic board with handwritten names, they walked in and tapped their name on a sleek screen. It set the tone for the entire evening."</p>
+  <p class="quote-attr">— Jasmine & Marcus T. &nbsp;·&nbsp; The Foxhall Estate, Atlanta, GA</p>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <h2>Ready to Elevate<br><em>Every Detail?</em></h2>
+  <p>Add the Digital Seating Display to your Black Tie Booth package. Reach out and we'll have your custom display built within 48 hours of receiving your guest list.</p>
+  <div class="hero-btns">
+    <a href="mailto:info@BTBooth.com?subject=Seating Chart Add-On Inquiry" class="btn-primary">Book Your Add-On</a>
+    <a href="../packages.html" class="btn-ghost">Browse All Experiences</a>
+  </div>
+  <div class="cta-detail">
+    <div class="di"><div class="dv">48 hrs</div><div class="dk">Build Turnaround</div></div>
+    <div class="di"><div class="dv">250+</div><div class="dk">Guests Supported</div></div>
+    <div class="di"><div class="dv">Any Screen</div><div class="dk">TV, Tablet, Display</div></div>
+    <div class="di"><div class="dv">Day-Of</div><div class="dk">Setup Included</div></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer>
+  <span class="fl">Black Tie Booth</span>
+  <div class="fr">
+    <a href="../index.html">Home</a> &nbsp;·&nbsp;
+    <a href="../packages.html">Experiences</a> &nbsp;·&nbsp;
+    <a href="../gallery.html">Gallery</a> &nbsp;·&nbsp;
+    <a href="mailto:info@BTBooth.com">info@BTBooth.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

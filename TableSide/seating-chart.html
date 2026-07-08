@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Wedding Seating Chart</title>
+<style>
+
+/* ── CUSTOMIZE PER WEDDING ────────────────────────────────────
+   Change these variables to match the event's color palette.   */
+:root {
+  --bg:           #0d0d0d;        /* Main background             */
+  --surface:      #1a1a1a;        /* Card / panel background     */
+  --surface2:     #242424;        /* Row hover / alternate       */
+  --border:       rgba(255,255,255,0.07); /* Subtle borders      */
+  --text:         #f0ede8;        /* Primary text                */
+  --text-dim:     rgba(240,237,232,0.45); /* Secondary text      */
+  --accent:       #D4AF6A;        /* Gold highlight              */
+  --accent-glow:  rgba(212,175,106,0.25); /* Glow behind tables  */
+  --found:        #D4AF6A;        /* Highlighted table color     */
+  --found-seat:   #fff;           /* Highlighted seat text       */
+  --table-bg:     #2a2a2a;        /* Default table fill          */
+  --table-border: rgba(255,255,255,0.12); /* Default table ring  */
+  --seat-bg:      #333;           /* Default seat dot            */
+  --font-display: 'Georgia', serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── VIEWS ───────────────────────────────────────────────────── */
+.view { position: absolute; inset: 0; display: flex; flex-direction: column; transition: opacity var(--transition), transform var(--transition); }
+.view.hidden { opacity: 0; pointer-events: none; transform: scale(0.98); }
+
+/* ── TOP BAR ─────────────────────────────────────────────────── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 80px; flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.topbar-sub {
+  font-size: 15px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.topbar-count {
+  font-size: 14px; color: var(--text-dim); text-align: right;
+}
+
+/* ── GUEST LIST ──────────────────────────────────────────────── */
+#view-list { flex-direction: row; }
+
+.letter-index {
+  width: 64px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: space-around;
+  padding: 16px 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+.letter-index button {
+  font-size: 18px; font-weight: 500; color: var(--text-dim);
+  padding: 6px 12px; border: none; background: none; cursor: pointer;
+  border-radius: 6px; transition: color 0.15s, background 0.15s;
+  touch-action: manipulation; min-height: 44px; min-width: 44px;
+  display: flex; align-items: center; justify-content: center;
+}
+.letter-index button:active, .letter-index button.has-guests:hover {
+  color: var(--accent); background: var(--accent-glow);
+}
+.letter-index button:not(.has-guests) { opacity: 0.2; pointer-events: none; }
+
+.guest-scroll-wrap {
+  flex: 1; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+}
+/* hide scrollbar visually */
+.guest-scroll-wrap::-webkit-scrollbar { width: 0; }
+
+.letter-section { }
+.letter-heading {
+  position: sticky; top: 0; z-index: 10;
+  font-family: var(--font-display);
+  font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); padding: 14px 48px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.guest-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 80px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+  touch-action: manipulation;
+}
+.guest-row:active { background: var(--surface2); }
+.guest-row .guest-name {
+  font-size: 28px; font-weight: 300; letter-spacing: -0.01em; color: var(--text);
+}
+.guest-row .guest-table-badge {
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-dim); background: var(--surface2);
+  padding: 6px 16px; border-radius: 40px;
+  white-space: nowrap;
+}
+.guest-row:active .guest-name { color: var(--accent); }
+
+/* ── FLOOR PLAN VIEW ─────────────────────────────────────────── */
+#view-floor { }
+
+.floor-topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 0 48px; height: 80px; flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.back-btn {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 400; color: var(--text-dim);
+  padding: 12px 20px; border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.2s; touch-action: manipulation;
+  min-height: 56px; background: none;
+}
+.back-btn:active { color: var(--accent); border-color: var(--accent); background: var(--accent-glow); }
+.floor-guest-info { flex: 1; }
+.floor-guest-name {
+  font-family: var(--font-display); font-size: 30px; font-weight: 400;
+  color: var(--accent); letter-spacing: 0.01em;
+}
+.floor-guest-detail {
+  font-size: 14px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;
+}
+.floor-instruction {
+  font-size: 14px; color: var(--text-dim); text-align: right; max-width: 220px; line-height: 1.5;
+}
+
+.floor-canvas-wrap {
+  flex: 1; position: relative; overflow: hidden;
+}
+#floor-svg {
+  width: 100%; height: 100%;
+}
+
+/* Table elements in SVG */
+.tbl-group { cursor: pointer; }
+.tbl-circle {
+  fill: var(--table-bg);
+  stroke: var(--table-border);
+  stroke-width: 2;
+  transition: all 0.4s;
+}
+.tbl-label {
+  fill: var(--text-dim);
+  font-family: var(--font-display);
+  font-size: 14px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  transition: fill 0.4s;
+}
+.tbl-name-label {
+  fill: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 11px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.seat-dot {
+  fill: var(--seat-bg);
+  stroke: var(--border);
+  stroke-width: 1;
+  transition: all 0.4s;
+}
+.seat-label {
+  fill: var(--text-dim);
+  font-size: 9px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  font-family: var(--font-body);
+}
+
+/* Highlighted state */
+.tbl-group.highlighted .tbl-circle {
+  fill: var(--accent-glow);
+  stroke: var(--accent);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 18px var(--accent-glow));
+}
+.tbl-group.highlighted .tbl-label { fill: var(--accent); font-size: 16px; }
+.tbl-group.highlighted .seat-dot.active-seat {
+  fill: var(--accent);
+  r: 14;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+.tbl-group.highlighted .seat-label.active-seat-label { fill: #000; font-weight: 700; }
+
+/* Dimmed tables */
+.tbl-group.dimmed .tbl-circle { fill: #111; stroke: rgba(255,255,255,0.04); }
+.tbl-group.dimmed .tbl-label { fill: rgba(255,255,255,0.12); }
+.tbl-group.dimmed .seat-dot { fill: #1e1e1e; }
+
+/* Table tooltip panel */
+.table-panel {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 12px; padding: 24px 36px; min-width: 340px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  text-align: center;
+}
+.table-panel.visible { opacity: 1; }
+.table-panel .tp-title {
+  font-family: var(--font-display); font-size: 20px; color: var(--accent); margin-bottom: 4px;
+}
+.table-panel .tp-name {
+  font-size: 28px; font-weight: 300; color: var(--text); margin-bottom: 8px;
+}
+.table-panel .tp-seat {
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+}
+
+/* ── ROOM LABEL ──────────────────────────────────────────────── */
+.room-label {
+  fill: rgba(255,255,255,0.06);
+  font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--font-body); text-anchor: middle; dominant-baseline: middle;
+}
+.room-rect { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 1; rx: 12; }
+
+</style>
+</head>
+<body>
+
+<!-- ══ VIEW: GUEST LIST ══════════════════════════════════════════ -->
+<div class="view" id="view-list">
+
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="event-title">Smith &amp; Johnson Wedding</div>
+      <div class="topbar-sub" id="event-date">Saturday, October 11, 2026</div>
+    </div>
+    <div class="topbar-count" id="guest-count"></div>
+  </div>
+
+  <div style="flex:1;display:flex;overflow:hidden;">
+    <!-- Letter index sidebar -->
+    <div class="letter-index" id="letter-index"></div>
+    <!-- Scrollable guest list -->
+    <div class="guest-scroll-wrap" id="guest-scroll">
+      <div id="guest-list-inner"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ VIEW: FLOOR PLAN ══════════════════════════════════════════ -->
+<div class="view hidden" id="view-floor">
+
+  <div class="floor-topbar">
+    <button class="back-btn" onclick="goBack()">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10l6 6"/></svg>
+      All Guests
+    </button>
+    <div class="floor-guest-info">
+      <div class="floor-guest-name" id="floor-guest-name">—</div>
+      <div class="floor-guest-detail" id="floor-guest-detail">—</div>
+    </div>
+    <div class="floor-instruction">Tap any table<br>to see who's seated there</div>
+  </div>
+
+  <div class="floor-canvas-wrap">
+    <svg id="floor-svg" viewBox="0 0 1920 940" preserveAspectRatio="xMidYMid meet">
+      <!-- Room outline -->
+      <rect x="40" y="30" width="1840" height="880" rx="16" class="room-rect"/>
+      <!-- Stage / Head table label -->
+      <rect x="760" y="46" width="400" height="44" rx="6" fill="rgba(212,175,106,0.08)" stroke="rgba(212,175,106,0.2)" stroke-width="1"/>
+      <text x="960" y="68" class="room-label" fill="rgba(212,175,106,0.4)" font-size="14" letter-spacing="0.2em" text-anchor="middle" dominant-baseline="middle">STAGE / HEAD TABLE</text>
+      <!-- Dance floor -->
+      <rect x="660" y="370" width="600" height="340" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <text x="960" y="542" class="room-label">DANCE FLOOR</text>
+      <!-- Tables drawn by JS -->
+      <g id="tables-group"></g>
+    </svg>
+  </div>
+
+  <!-- Table info panel -->
+  <div class="table-panel" id="table-panel">
+    <div class="tp-title" id="tp-title">Table 1</div>
+    <div class="tp-name" id="tp-name">—</div>
+    <div class="tp-seat" id="tp-seat">Seat —</div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+//  WEDDING DATA — edit this section for each event
+// ════════════════════════════════════════════════════════════════
+
+const EVENT = {
+  title:  "Smith & Johnson Wedding",
+  date:   "Saturday, October 11, 2026",
+  venue:  "The Grand Ballroom · Atlanta, GA"
+};
+
+// Tables: id, name, position on floor plan (cx, cy), guests array
+// Each guest: name, seat (1-based position around the table)
+const TABLES = [
+  {
+    id: 1, name: "Table 1", cx: 200, cy: 200, seats: 8,
+    guests: [
+      { name: "Anderson, James",   seat: 1 },
+      { name: "Anderson, Patricia",seat: 2 },
+      { name: "Baker, Thomas",     seat: 3 },
+      { name: "Baker, Susan",      seat: 4 },
+      { name: "Carter, William",   seat: 5 },
+      { name: "Carter, Linda",     seat: 6 },
+      { name: "Davis, Robert",     seat: 7 },
+      { name: "Davis, Mary",       seat: 8 },
+    ]
+  },
+  {
+    id: 2, name: "Table 2", cx: 480, cy: 200, seats: 8,
+    guests: [
+      { name: "Edwards, John",     seat: 1 },
+      { name: "Edwards, Barbara",  seat: 2 },
+      { name: "Foster, Charles",   seat: 3 },
+      { name: "Foster, Helen",     seat: 4 },
+      { name: "Garcia, Michael",   seat: 5 },
+      { name: "Garcia, Dorothy",   seat: 6 },
+      { name: "Harris, David",     seat: 7 },
+      { name: "Harris, Sandra",    seat: 8 },
+    ]
+  },
+  {
+    id: 3, name: "Table 3", cx: 200, cy: 490, seats: 8,
+    guests: [
+      { name: "Jackson, Joseph",   seat: 1 },
+      { name: "Jackson, Betty",    seat: 2 },
+      { name: "King, George",      seat: 3 },
+      { name: "King, Margaret",    seat: 4 },
+      { name: "Lee, Ronald",       seat: 5 },
+      { name: "Lee, Ruth",         seat: 6 },
+      { name: "Martin, Edward",    seat: 7 },
+      { name: "Martin, Sharon",    seat: 8 },
+    ]
+  },
+  {
+    id: 4, name: "Table 4", cx: 200, cy: 760, seats: 8,
+    guests: [
+      { name: "Nelson, Walter",    seat: 1 },
+      { name: "Nelson, Deborah",   seat: 2 },
+      { name: "Oliver, Brian",     seat: 3 },
+      { name: "Oliver, Carol",     seat: 4 },
+      { name: "Parker, Kevin",     seat: 5 },
+      { name: "Parker, Donna",     seat: 6 },
+      { name: "Quinn, Scott",      seat: 7 },
+      { name: "Quinn, Michelle",   seat: 8 },
+    ]
+  },
+  {
+    id: 5, name: "Table 5", cx: 480, cy: 760, seats: 8,
+    guests: [
+      { name: "Roberts, Mark",     seat: 1 },
+      { name: "Roberts, Lisa",     seat: 2 },
+      { name: "Stewart, Daniel",   seat: 3 },
+      { name: "Stewart, Nancy",    seat: 4 },
+      { name: "Taylor, Paul",      seat: 5 },
+      { name: "Taylor, Karen",     seat: 6 },
+      { name: "Turner, Jason",     seat: 7 },
+      { name: "Turner, Angela",    seat: 8 },
+    ]
+  },
+  {
+    id: 6, name: "Table 6", cx: 1440, cy: 200, seats: 8,
+    guests: [
+      { name: "Underwood, Eric",   seat: 1 },
+      { name: "Underwood, Laura",  seat: 2 },
+      { name: "Vincent, Jeffrey",  seat: 3 },
+      { name: "Vincent, Amanda",   seat: 4 },
+      { name: "Walker, Gary",      seat: 5 },
+      { name: "Walker, Melissa",   seat: 6 },
+      { name: "White, Timothy",    seat: 7 },
+      { name: "White, Kimberly",   seat: 8 },
+    ]
+  },
+  {
+    id: 7, name: "Table 7", cx: 1720, cy: 200, seats: 8,
+    guests: [
+      { name: "Young, Stephen",    seat: 1 },
+      { name: "Young, Stephanie",  seat: 2 },
+      { name: "Adams, Christopher",seat: 3 },
+      { name: "Adams, Rebecca",    seat: 4 },
+      { name: "Bell, Andrew",      seat: 5 },
+      { name: "Bell, Heather",     seat: 6 },
+      { name: "Collins, Patrick",  seat: 7 },
+      { name: "Collins, Christine",seat: 8 },
+    ]
+  },
+  {
+    id: 8, name: "Table 8", cx: 1440, cy: 490, seats: 8,
+    guests: [
+      { name: "Dixon, Jonathan",   seat: 1 },
+      { name: "Dixon, Samantha",   seat: 2 },
+      { name: "Evans, Matthew",    seat: 3 },
+      { name: "Evans, Ashley",     seat: 4 },
+      { name: "Flynn, Ryan",       seat: 5 },
+      { name: "Flynn, Megan",      seat: 6 },
+      { name: "Gibson, Kyle",      seat: 7 },
+      { name: "Gibson, Rachel",    seat: 8 },
+    ]
+  },
+  {
+    id: 9, name: "Table 9", cx: 1720, cy: 490, seats: 8,
+    guests: [
+      { name: "Hayes, Brandon",    seat: 1 },
+      { name: "Hayes, Amber",      seat: 2 },
+      { name: "Ingram, Justin",    seat: 3 },
+      { name: "Ingram, Brittany",  seat: 4 },
+      { name: "Jensen, Tyler",     seat: 5 },
+      { name: "Jensen, Ashley",    seat: 6 },
+      { name: "Kelly, Nathan",     seat: 7 },
+      { name: "Kelly, Sarah",      seat: 8 },
+    ]
+  },
+  {
+    id: 10, name: "Table 10", cx: 1440, cy: 760, seats: 8,
+    guests: [
+      { name: "Lambert, Alex",     seat: 1 },
+      { name: "Lambert, Jessica",  seat: 2 },
+      { name: "Moore, Dylan",      seat: 3 },
+      { name: "Moore, Lauren",     seat: 4 },
+      { name: "Nash, Cameron",     seat: 5 },
+      { name: "Nash, Tiffany",     seat: 6 },
+      { name: "Owen, Austin",      seat: 7 },
+      { name: "Owen, Kayla",       seat: 8 },
+    ]
+  },
+  {
+    id: 11, name: "Table 11", cx: 1720, cy: 760, seats: 8,
+    guests: [
+      { name: "Price, Zachary",    seat: 1 },
+      { name: "Price, Natalie",    seat: 2 },
+      { name: "Reed, Connor",      seat: 3 },
+      { name: "Reed, Alexis",      seat: 4 },
+      { name: "Stone, Trevor",     seat: 5 },
+      { name: "Stone, Danielle",   seat: 6 },
+      { name: "Wood, Spencer",     seat: 7 },
+      { name: "Wood, Victoria",    seat: 8 },
+    ]
+  },
+];
+
+// ════════════════════════════════════════════════════════════════
+//  BUILD GUEST LIST
+// ════════════════════════════════════════════════════════════════
+
+document.getElementById('event-title').textContent = EVENT.title;
+document.getElementById('event-date').textContent  = EVENT.date;
+
+// Flatten all guests with table info
+const allGuests = [];
+TABLES.forEach(t => {
+  t.guests.forEach(g => {
+    allGuests.push({ name: g.name, seat: g.seat, table: t });
+  });
+});
+allGuests.sort((a,b) => a.name.localeCompare(b.name));
+
+document.getElementById('guest-count').innerHTML =
+  `<div style="font-size:22px;font-weight:300;color:var(--text)">${allGuests.length}</div>` +
+  `<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-top:2px">Guests</div>`;
+
+// Group by first letter
+const byLetter = {};
+allGuests.forEach(g => {
+  const L = g.name[0].toUpperCase();
+  if (!byLetter[L]) byLetter[L] = [];
+  byLetter[L].push(g);
+});
+
+const letters = Object.keys(byLetter).sort();
+const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+// Letter index
+const idxEl = document.getElementById('letter-index');
+allLetters.forEach(L => {
+  const btn = document.createElement('button');
+  btn.textContent = L;
+  if (byLetter[L]) {
+    btn.classList.add('has-guests');
+    btn.onclick = () => {
+      const target = document.getElementById('section-' + L);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+  }
+  idxEl.appendChild(btn);
+});
+
+// Guest list
+const listInner = document.getElementById('guest-list-inner');
+letters.forEach(L => {
+  const sec = document.createElement('div');
+  sec.className = 'letter-section';
+  sec.id = 'section-' + L;
+
+  const heading = document.createElement('div');
+  heading.className = 'letter-heading';
+  heading.textContent = L;
+  sec.appendChild(heading);
+
+  byLetter[L].forEach(g => {
+    const row = document.createElement('div');
+    row.className = 'guest-row';
+    row.innerHTML = `
+      <span class="guest-name">${g.name}</span>
+      <span class="guest-table-badge">${g.table.name} · Seat ${g.seat}</span>
+    `;
+    row.addEventListener('click', () => showFloor(g));
+    sec.appendChild(row);
+  });
+
+  listInner.appendChild(sec);
+});
+
+// ════════════════════════════════════════════════════════════════
+//  BUILD FLOOR PLAN SVG
+// ════════════════════════════════════════════════════════════════
+
+const TABLE_R  = 68;  // table circle radius
+const SEAT_R   = 11;  // seat dot radius
+const SEAT_DIST= 96;  // distance from center to seat
+
+const svgNS = 'http://www.w3.org/2000/svg';
+const group = document.getElementById('tables-group');
+
+function makeSVGEl(tag, attrs) {
+  const el = document.createElementNS(svgNS, tag);
+  Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,v));
+  return el;
+}
+
+const tableEls = {}; // tableId → group element
+
+TABLES.forEach(t => {
+  const g = makeSVGEl('g', { class: 'tbl-group', id: 'tbl-' + t.id });
+
+  // Table circle
+  const circle = makeSVGEl('circle', {
+    class: 'tbl-circle', cx: t.cx, cy: t.cy, r: TABLE_R
+  });
+  g.appendChild(circle);
+
+  // Table name label
+  const lbl = makeSVGEl('text', {
+    class: 'tbl-label', x: t.cx, y: t.cy - 10
+  });
+  lbl.textContent = t.name;
+  g.appendChild(lbl);
+
+  // Seat dots
+  for (let s = 1; s <= t.seats; s++) {
+    const angle = ((s - 1) / t.seats) * 2 * Math.PI - Math.PI / 2;
+    const sx = t.cx + Math.cos(angle) * SEAT_DIST;
+    const sy = t.cy + Math.sin(angle) * SEAT_DIST;
+
+    // Find guest at this seat
+    const guestAtSeat = t.guests.find(gg => gg.seat === s);
+    const seatLabel = guestAtSeat ? guestAtSeat.name.split(',')[0] : s;
+
+    const dot = makeSVGEl('circle', {
+      class: 'seat-dot',
+      'data-seat': s,
+      cx: sx, cy: sy, r: SEAT_R
+    });
+    g.appendChild(dot);
+
+    const stxt = makeSVGEl('text', {
+      class: 'seat-label',
+      'data-seat': s,
+      x: sx, y: sy
+    });
+    stxt.textContent = s;
+    g.appendChild(stxt);
+  }
+
+  // Click handler to show table info
+  g.addEventListener('click', () => showTablePanel(t));
+
+  group.appendChild(g);
+  tableEls[t.id] = g;
+});
+
+// ════════════════════════════════════════════════════════════════
+//  NAVIGATION
+// ════════════════════════════════════════════════════════════════
+
+let currentGuest = null;
+
+function showFloor(guest) {
+  currentGuest = guest;
+  const t = guest.table;
+
+  document.getElementById('floor-guest-name').textContent  = guest.name;
+  document.getElementById('floor-guest-detail').textContent = `${t.name}  ·  Seat ${guest.seat}  ·  ${EVENT.venue}`;
+
+  // Reset all tables
+  Object.values(tableEls).forEach(el => {
+    el.classList.remove('highlighted', 'dimmed');
+    // Reset seat dots
+    el.querySelectorAll('.seat-dot').forEach(d => {
+      d.classList.remove('active-seat');
+      d.setAttribute('r', SEAT_R);
+    });
+    el.querySelectorAll('.seat-label').forEach(d => d.classList.remove('active-seat-label'));
+  });
+
+  // Highlight guest's table
+  const tEl = tableEls[t.id];
+  tEl.classList.add('highlighted');
+
+  // Highlight specific seat
+  const angle = ((guest.seat - 1) / t.seats) * 2 * Math.PI - Math.PI / 2;
+  tEl.querySelectorAll('.seat-dot').forEach(d => {
+    if (parseInt(d.getAttribute('data-seat')) === guest.seat) {
+      d.classList.add('active-seat');
+      d.setAttribute('r', 14);
+    }
+  });
+  tEl.querySelectorAll('.seat-label').forEach(d => {
+    if (parseInt(d.getAttribute('data-seat')) === guest.seat) {
+      d.classList.add('active-seat-label');
+    }
+  });
+
+  // Dim all other tables
+  Object.entries(tableEls).forEach(([id, el]) => {
+    if (parseInt(id) !== t.id) el.classList.add('dimmed');
+  });
+
+  // Show panel
+  showTablePanel(t, guest);
+
+  // Switch views
+  document.getElementById('view-list').classList.add('hidden');
+  document.getElementById('view-floor').classList.remove('hidden');
+}
+
+function showTablePanel(t, forcedGuest) {
+  const panel = document.getElementById('table-panel');
+  const guest = forcedGuest || currentGuest;
+
+  document.getElementById('tp-title').textContent = t.name;
+
+  if (guest && guest.table.id === t.id) {
+    document.getElementById('tp-name').textContent = guest.name;
+    document.getElementById('tp-seat').textContent = `Seat ${guest.seat}`;
+  } else {
+    // Show all guests at this table
+    const names = t.guests.map(g => g.name).join('  ·  ');
+    document.getElementById('tp-name').textContent = t.name;
+    document.getElementById('tp-seat').textContent = `${t.guests.length} guests`;
+  }
+
+  panel.classList.add('visible');
+}
+
+function goBack() {
+  document.getElementById('view-floor').classList.add('hidden');
+  document.getElementById('view-list').classList.remove('hidden');
+  document.getElementById('table-panel').classList.remove('visible');
+  currentGuest = null;
+}
+
+// Dismiss panel on SVG background tap
+document.getElementById('floor-svg').addEventListener('click', (e) => {
+  if (e.target.id === 'floor-svg' || e.target.classList.contains('room-rect') || e.target.classList.contains('room-label')) {
+    document.getElementById('table-panel').classList.remove('visible');
+  }
+});
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') goBack();
+});
+</script>
+</body>
+</html>

@@ -12,11 +12,11 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --gold: #C8A26A; --gold-dim: rgba(200,162,106,0.7);
-  --white: #f5ede6; --white-dim: rgba(245,237,230,0.6);
-  --dark: #1a1410; --surface: #241e18; --surface2: #2e2620;
-  --mid: #8a7a70; --light-bg: #f5ede6; --light-surface: #fdf6f0;
-  --dark-text: #2e2620; --dark-mid: #8a7a70;
+  --gold: #D4AF6A; --gold-dim: rgba(212,175,106,0.7);
+  --white: #f5f5f7; --white-dim: rgba(245,245,247,0.6);
+  --dark: #000000; --surface: #161617; --surface2: #1d1d1f;
+  --mid: #6e6e73; --light-bg: #f5f5f7; --light-surface: #fbfbfd;
+  --dark-text: #1d1d1f; --dark-mid: #6e6e73;
   --rose: rgba(190,143,160,0.12);
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
@@ -159,25 +159,23 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
 
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
-  <a href="index.html" onclick="closeMob()">Home</a>
-  <a href="experiences.html" onclick="closeMob()">Experiences</a>
-  <a href="packages.html" onclick="closeMob()">Packages</a>
-  <a href="gallery.html" onclick="closeMob()">Gallery</a>
-  <a href="seating-chart-service.html" onclick="closeMob()">Seating Chart</a>
-  <a href="index.html#booking" onclick="closeMob()">Book Now</a>
+  <a href="/" onclick="closeMob()">Home</a>
+  <a href="/experiences/" onclick="closeMob()">Experiences</a>
+  <a href="/packages/" onclick="closeMob()">Packages</a>
+  <a href="/seating-chart/" onclick="closeMob()">Seating Chart</a>
+  <a href="/#booking" onclick="closeMob()">Book Now</a>
 </div>
 
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
+  <a href="/" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
   <ul class="nav-links" role="list">
-    <li><a href="experiences.html">Experiences</a></li>
-    <li><a href="packages.html" class="active">Packages</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="seating-chart-service.html">Seating Chart</a></li>
-    <li><a href="index.html#testimonials">Reviews</a></li>
+    <li><a href="/experiences/">Experiences</a></li>
+    <li><a href="/packages/" class="active">Packages</a></li>
+    <li><a href="/seating-chart/">Seating Chart</a></li>
+    <li><a href="/#testimonials">Reviews</a></li>
   </ul>
-  <a href="index.html#booking" class="nav-cta">Book Now</a>
+  <a href="/#booking" class="nav-cta">Book Now</a>
   <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -232,7 +230,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery link within 48 hours</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Standard black or white backdrop</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
 
       <!-- SIGNATURE -->
@@ -250,7 +248,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Choice of backdrop color</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
 
       <!-- BLACK TIE -->
@@ -268,7 +266,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Glam filter and Hollywood style black and white images</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Custom backdrop</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
     </div>
   </section>
@@ -301,7 +299,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>On-site walkthrough before we leave</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 48 hours</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Book Now</a>
+        <a href="/#booking" class="pkg-cta">Book Now</a>
       </div>
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -317,7 +315,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>GIFs and Boomerangs included</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Book Now</a>
+        <a href="/#booking" class="pkg-cta">Book Now</a>
       </div>
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">Black Tie</p>
@@ -331,7 +329,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>30 second guest video messages</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Book Now</a>
+        <a href="/#booking" class="pkg-cta">Book Now</a>
       </div>
     </div>
   </section>
@@ -361,7 +359,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 48 hours</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
 
       <!-- SIGNATURE -->
@@ -379,7 +377,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 48 hours</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
 
       <!-- BLACK TIE -->
@@ -395,7 +393,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and staging area</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
 
     </div>
@@ -427,7 +425,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Dedicated onsite attendant</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -442,7 +440,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Red carpet rope and stanchion</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery within 24 hours</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">Black Tie</p>
@@ -456,7 +454,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Two custom overlay designs</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
     </div>
   </section>
@@ -488,7 +486,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Digital gallery link within 48 hours</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -504,7 +502,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Comfort carpet and styling</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Choice of backdrop color</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">Black Tie</p>
@@ -519,7 +517,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Priority same night gallery delivery</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Glam filter and Hollywood style black and white images</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
     </div>
   </section>
@@ -548,7 +546,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Décor floor skirt to conceal base of screen</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -564,7 +562,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Décor floor skirt to conceal base of screens</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">3 Screens</p>
@@ -580,7 +578,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Décor floor skirt to conceal base of screens</li>
           <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>Professional setup and breakdown</li>
         </ul>
-        <a href="index.html#booking" class="pkg-cta">Request a Quote</a>
+        <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
     </div>
   </section>
@@ -628,6 +626,10 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         <div><p class="addon-name">Glam Filter</p><p class="addon-desc">Soft beauty filter mode</p></div>
         <p class="addon-price">$49</p>
       </div>
+      <div class="addon-item">
+        <div><p class="addon-name">Video Testimony</p><p class="addon-desc">Guests record heartfelt video messages</p></div>
+        <p class="addon-price">Custom Quote</p>
+      </div>
     </div>
   </div>
 </section>
@@ -653,8 +655,8 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   <h2 class="reveal d1">Your date is waiting.</h2>
   <p class="reveal d2">Atlanta's calendar fills fast. Reach out early and we'll handle every detail from there.</p>
   <div class="cta-banner-btns reveal d3">
-    <a href="index.html#booking" class="pill pill-blue">Request a Quote</a>
-    <a href="experiences.html" class="pill pill-ghost">View Experiences</a>
+    <a href="/#booking" class="pill pill-blue">Request a Quote</a>
+    <a href="/experiences/" class="pill pill-ghost">View Experiences</a>
   </div>
 </section>
 
@@ -666,9 +668,9 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
       <span class="f-brand">Black Tie Booth</span>
       <p class="f-tagline">Atlanta's most elegant photo booth experience. Creating unforgettable moments since 2018.</p>
     </div>
-    <div class="f-col"><h4>Experiences</h4><ul><li><a href="experiences.html">British Phone Booth</a></li><li><a href="experiences.html">360 Video Booth</a></li><li><a href="experiences.html">Classic Photo Booth</a></li><li><a href="experiences.html">Vintage Photo Booth</a></li><li><a href="experiences.html">Mirror Booth</a></li><li><a href="experiences.html#story-videowall">Video Wall</a></li></ul></div>
-    <div class="f-col"><h4>Packages</h4><ul><li><a href="packages.html#vintage">Vintage Booth</a></li><li><a href="packages.html#classic">Classic Booth</a></li><li><a href="packages.html#phone">Phone Booth</a></li><li><a href="packages.html#360">360 Video</a></li><li><a href="packages.html#mirror">Mirror Booth</a></li><li><a href="packages.html#videowall">Video Wall</a></li></ul></div>
-    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="index.html#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
+    <div class="f-col"><h4>Experiences</h4><ul><li><a href="/experiences/">British Phone Booth</a></li><li><a href="/experiences/">360 Video Booth</a></li><li><a href="/experiences/">Classic Photo Booth</a></li><li><a href="/experiences/">Vintage Photo Booth</a></li><li><a href="/experiences/">Mirror Booth</a></li><li><a href="/experiences/#story-videowall">Video Wall</a></li></ul></div>
+    <div class="f-col"><h4>Packages</h4><ul><li><a href="/packages/#vintage">Vintage Booth</a></li><li><a href="/packages/#classic">Classic Booth</a></li><li><a href="/packages/#phone">Phone Booth</a></li><li><a href="/packages/#360">360 Video</a></li><li><a href="/packages/#mirror">Mirror Booth</a></li><li><a href="/packages/#videowall">Video Wall</a></li></ul></div>
+    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="/#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p class="f-copy">&copy; 2026 Black Tie Booth. All rights reserved.</p>

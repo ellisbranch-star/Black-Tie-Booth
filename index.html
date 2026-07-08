@@ -42,8 +42,8 @@
   "description": "Atlanta's premier photo booth company offering British Phone Booth, 360 Video Booth, Classic Photo Booth, Vintage Photo Booth, Mirror Booth, and Video Wall for weddings, galas, and corporate events.",
   "url": "https://www.btbooth.com",
   "image": "https://www.btbooth.com/6a4dda6e-7202-4305-9bf7-038233b4d76b.png",
-  "telephone": "+14045550100",
-  "email": "info@BTBooth.com",
+  "telephone": "+18303751159",
+  "email": "sales@blacklabeleventsandrentals.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Atlanta",
@@ -70,7 +70,7 @@
   "priceRange": "$$$",
   "openingHours": "Mo-Su 09:00-21:00",
   "sameAs": [
-    "https://www.instagram.com/blacktieboothco"
+    "https://www.instagram.com/btboothco?utm_source=qr"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -185,7 +185,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('6a4dda6e-7202-4305-9bf7-038233b4d76b.png') center/cover no-repeat;
+  background: url('https://btbooth.com/wp-content/uploads/2026/07/6a4dda6e-7202-4305-9bf7-038233b4d76b.png') center/cover no-repeat;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -407,6 +407,14 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 @media (max-width: 734px) { .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-grid .gi.wide { grid-column: span 2; } }
 @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-grid .gi.wide { grid-column: span 1; aspect-ratio: 4/3; } }
 
+/* Gallery video reel */
+.gallery-video-wrap { position: relative; width: 100%; max-height: 70vh; overflow: hidden; margin-bottom: 2px; }
+.gallery-reel { width: 100%; max-height: 70vh; object-fit: cover; display: block; }
+.gallery-video-label { position: absolute; bottom: 1.5rem; left: 1.75rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+.gallery-cta { text-align: center; padding: 4rem 24px 5rem; }
+.pill-gold { background: var(--gold); color: #000; }
+.pill-gold:hover { background: #e0bc70; }
+
 /* ── PRICING ─────────────────────────────────────────── */
 #pricing { background: var(--light-bg); padding: 96px 24px; }
 .pricing-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
@@ -517,16 +525,21 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .flbl { display: block; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.01em; color: var(--mid); margin-bottom: 0.375rem; text-transform: uppercase; }
 .fin, .fsel, .fta {
   width: 100%; font-family: var(--sans); font-size: 0.9375rem; font-weight: 300;
-  color: #f5f5f7; background: rgba(255,255,255,0.06); border: 1px solid transparent;
+  color: #f5f5f7 !important; background: rgba(255,255,255,0.06) !important; border: 1px solid transparent;
   border-radius: 10px; padding: 0.75rem 1rem; outline: none; appearance: none; -webkit-appearance: none;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
-.fin:focus, .fsel:focus, .fta:focus { background: rgba(255,255,255,0.09); border-color: rgba(212,175,106,0.5); box-shadow: 0 0 0 3px rgba(212,175,106,0.08); }
-.fin::placeholder, .fta::placeholder { color: rgba(255,255,255,0.22); }
-.fsel { cursor: pointer; color: rgba(245,245,247,0.75); }
+.fin:focus, .fsel:focus, .fta:focus { background: rgba(255,255,255,0.09) !important; border-color: rgba(212,175,106,0.5); box-shadow: 0 0 0 3px rgba(212,175,106,0.08); }
+.fin::placeholder, .fta::placeholder { color: rgba(255,255,255,0.22) !important; }
+.fsel { cursor: pointer; color: rgba(245,245,247,0.75) !important; }
 .fsel-wrap { position: relative; }
 .fsel-wrap::after { content: ''; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--mid); pointer-events: none; }
 .fta { resize: vertical; min-height: 88px; }
+.booth-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+.booth-chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+.booth-chip label { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.9rem; border-radius: 980px; font-size: 0.8125rem; font-weight: 300; color: rgba(245,245,247,0.7); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); cursor: pointer; transition: all 0.18s; user-select: none; }
+.booth-chip label:hover { background: rgba(255,255,255,0.1); border-color: rgba(212,175,106,0.3); color: #f5f5f7; }
+.booth-chip input:checked + label { background: rgba(212,175,106,0.15); border-color: rgba(212,175,106,0.55); color: var(--gold); }
 .fsubmit { width: 100%; margin-top: 0.5rem; padding: 0.9375rem 1.5rem; border-radius: 980px; background: #000; color: var(--gold); font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; cursor: pointer; transition: background 0.2s; }
 .fsubmit:hover { background: #1a1a1a; }
 .fsubmit:disabled { background: rgba(0,0,0,0.3); cursor: default; }
@@ -537,7 +550,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .fin-error { border-color: rgba(255,80,80,0.6) !important; outline: 1px solid rgba(255,80,80,0.3); }
 
 /* ── INSTAGRAM STRIP ─────────────────────────────────── */
-#instagram { background: var(--dark); padding: 80px 0; overflow: hidden; }
+#instagram { background: var(--dark); padding: 80px 0; }
 .ig-header { text-align: center; padding: 0 24px 48px; }
 .ig-handle {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -682,9 +695,6 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
               transform 0.8s cubic-bezier(0.16,1,0.3,1) calc(0.5s + var(--wi) * 0.09s);
 }
 
-/* ── CUSTOM CURSOR ───────────────────────────────────── */
-@media (pointer: fine) {
-  * { cursor: none !important; }
   .cursor-dot {
     position: fixed; width: 4px; height: 4px;
     background: rgba(255,255,255,0.7); border-radius: 50%;
@@ -894,12 +904,12 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
-  <a href="experiences.html" onclick="closeMob()">Experiences</a>
+  <a href="/experiences/" onclick="closeMob()">Experiences</a>
+  <a href="/packages/" onclick="closeMob()">Packages</a>
+  <a href="/seating-chart/" onclick="closeMob()">Seating Chart</a>
   <a href="#booking" onclick="closeMob()">Book Now</a>
 </div>
 
@@ -907,8 +917,9 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <nav id="nav" class="over-dark" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
   <ul class="nav-links" role="list">
-    <li><a href="experiences.html">Experiences</a></li>
-    <li><a href="packages.html">Packages</a></li>
+    <li><a href="/experiences/">Experiences</a></li>
+    <li><a href="/packages/">Packages</a></li>
+    <li><a href="/seating-chart/">Seating Chart</a></li>
     <li><a href="#testimonials">Reviews</a></li>
   </ul>
   <a href="#booking" class="nav-cta">Book Now</a>
@@ -921,7 +932,6 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <section id="hero" aria-label="Hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Weddings · Corporate Events · Galas</p>
     <h1 class="hero-h1">Black Tie Booth.</h1>
     <p class="hero-sub">Where luxury meets the moment.<br>Six iconic experiences for the events that matter most.</p>
     <div class="hero-actions">
@@ -960,26 +970,26 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
 <!-- TRUSTED PARTNERS -->
 <section id="partners" data-theme="dark" aria-label="Trusted partners">
-  <p class="partners-eyebrow reveal">Trusted Partners</p>
+  <p class="partners-eyebrow reveal">Our Resume</p>
   <p class="partners-headline reveal d1">Trusted by corporations, event planners, and venues.</p>
   <div class="partners-row">
     <div class="partner-tile reveal">
       <div class="partner-icon" style="width:80px;height:80px;" aria-hidden="true">
-        <img src="431556850_773081761020015_8273878796118151676_n.jpg" alt="Sol Cypress Hotel logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
+        <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-logo-sol-cypress.jpg" alt="Sol Cypress Hotel logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
       </div>
       <div class="partner-name">Sol Cypress Hotel</div>
       <div class="partner-type">Venue Partner</div>
     </div>
     <div class="partner-tile reveal d1">
       <div class="partner-icon" style="width:80px;height:80px;" aria-hidden="true">
-        <img src="davids.png" alt="David's Bridal logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
+        <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-logo-davids.png" alt="David's Bridal logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
       </div>
       <div class="partner-name">David's Bridal</div>
       <div class="partner-type">Retail Partner</div>
     </div>
     <div class="partner-tile reveal d2">
       <div class="partner-icon" style="width:80px;height:80px;" aria-hidden="true">
-        <img src="the-gardens-at-west-green-brand-hd.png" alt="The Gardens at West Green logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
+        <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-logo-gardens.png" alt="The Gardens at West Green logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
       </div>
       <div class="partner-name">The Gardens at West Green</div>
       <div class="partner-type">Venue Partner</div>
@@ -991,7 +1001,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <!-- VIDEO WALL PROMO -->
 <!-- VIDEO WALL PROMO -->
 <section id="videowall-promo" data-theme="dark" aria-label="Video Wall promotion" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-  <img src="videowall-bg.png" alt="Black Tie Booth Video Wall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-exp-videowall.png" alt="Black Tie Booth Video Wall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.75) 100%);"></div>
   <div style="position:relative;z-index:2;text-align:center;padding:7rem 28px 4rem;width:100%;max-width:680px;">
     <p class="eyebrow reveal">The Video Wall</p>
@@ -999,7 +1009,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <p class="subhead reveal d2" style="color:rgba(245,245,247,0.72);margin-top:1.5rem;font-size:clamp(0.9rem,2.2vw,1.05rem);line-height:1.7;">An 8 foot LED wall shaped entirely around your vision, with custom palettes, your story on full display, and an ambiance that wraps every guest in the warmth of the evening from the first look to the last dance.</p>
     <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;" class="reveal d3">
       <a href="#booking" class="pill pill-blue">Reserve Your Date <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:14px;height:14px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
-      <a href="experiences.html#story-videowall" class="pill pill-ghost">See the Experience</a>
+      <a href="/experiences/#story-videowall" class="pill pill-ghost">See the Experience</a>
     </div>
   </div>
 </section>
@@ -1013,8 +1023,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;" class="reveal d2">
 
-      <a href="experiences.html" class="exp-card" aria-label="British Phone Booth experience">
-        <img src="IMG_3364.jpg" alt="British Phone Booth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <a href="/experiences/" class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/IMG_3364.jpg') center/contain no-repeat;" aria-label="British Phone Booth experience">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
           <span class="exp-num">01</span>
@@ -1024,10 +1033,13 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         </div>
       </a>
 
-      <a href="experiences.html#story-360" class="exp-card" style="background:#0a0a0a;" aria-label="360 Video Booth experience">
-        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.7;">
-          <source src="IMG_2606.MOV" type="video/mp4">
-        </video>
+      <a href="/experiences/#story-360" class="exp-card" style="background:#0a0a0a;" aria-label="360 Video Booth experience">
+        <!-- blurred bg fill -->
+        <iframe src="https://www.youtube.com/embed/npBHCsohbik?autoplay=1&mute=1&loop=1&playlist=npBHCsohbik&controls=0&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" style="position:absolute;top:-30%;left:-30%;width:160%;height:160%;border:none;pointer-events:none;filter:blur(18px);transform:scale(1.05);opacity:0.6;" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+        <!-- main video -->
+        <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:56%;height:120%;-webkit-mask-image:radial-gradient(ellipse 75% 80% at 50% 50%,black 40%,transparent 100%);mask-image:radial-gradient(ellipse 75% 80% at 50% 50%,black 40%,transparent 100%);pointer-events:none;">
+          <iframe src="https://www.youtube.com/embed/npBHCsohbik?autoplay=1&mute=1&loop=1&playlist=npBHCsohbik&controls=0&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none;opacity:0.9;" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+        </div>
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="position:relative;z-index:2;">
           <span class="exp-num">02</span>
@@ -1037,8 +1049,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         </div>
       </a>
 
-      <a href="experiences.html" class="exp-card" style="background:#161617;" aria-label="Classic Photo Booth experience">
-        <img src="selfieboothblacktie.png" alt="Classic Photo Booth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+      <a href="/experiences/" class="exp-card" style="background:#161617 url('https://btbooth.com/wp-content/uploads/2026/07/selfieboothblacktie.png') center top/cover no-repeat;" aria-label="Classic Photo Booth experience">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
           <span class="exp-num">03</span>
@@ -1048,8 +1059,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         </div>
       </a>
 
-      <a href="experiences.html" class="exp-card" aria-label="Vintage Photo Booth experience">
-        <img src="vintage-booth-updated.png" alt="Vintage Photo Booth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <a href="/experiences/" class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/vintage-booth-updated.png') center/cover no-repeat;" aria-label="Vintage Photo Booth experience">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
           <span class="exp-num">04</span>
@@ -1059,8 +1069,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         </div>
       </a>
 
-      <a href="experiences.html" class="exp-card" aria-label="Mirror Booth experience">
-        <img src="IMG_3367.JPG" alt="Mirror Booth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <a href="/experiences/" class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/IMG_3367.jpg') center/cover no-repeat;" aria-label="Mirror Booth experience">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
           <span class="exp-num">05</span>
@@ -1070,8 +1079,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
         </div>
       </a>
 
-      <a href="experiences.html#story-videowall" class="exp-card" aria-label="Video Wall experience">
-        <img src="videowall-bg.png" alt="Video Wall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <a href="/experiences/#story-videowall" class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/videowall-bg.png') center/cover no-repeat;" aria-label="Video Wall experience">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
           <span class="exp-num">06</span>
@@ -1084,7 +1092,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     </div>
 
     <div style="text-align:center;margin-top:2.5rem;" class="reveal d3">
-      <a href="experiences.html" class="pill pill-blue" style="font-size:1rem;padding:0.75rem 2rem;">Explore All Experiences</a>
+      <a href="/experiences/" class="pill pill-blue" style="font-size:1rem;padding:0.75rem 2rem;">Explore All Experiences</a>
     </div>
   </div>
 </section>
@@ -1097,20 +1105,74 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <div class="spec reveal d3"><div class="spec-val" style="font-size:clamp(1.5rem,3vw,2.5rem)">ATL</div><div class="spec-lbl">& Southeast</div></div>
 </div>
 
+<!-- INSTAGRAM GALLERY -->
+<section id="instagram" data-theme="dark" aria-label="Instagram gallery">
+  <div class="ig-header">
+    <p class="eyebrow">Follow Along</p>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-handle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      @btboothco
+    </a>
+    <p class="subhead" style="margin-top:0.75rem;">Real moments from real events.</p>
+  </div>
+  <div class="ig-strip">
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-wedding.jpg" alt="Clarissa & Carlos wedding" loading="lazy" style="object-position: center 15%;">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-flowers.jpg" alt="Flower wall photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-pink.jpg" alt="Pink backdrop photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-valentine.jpg" alt="Valentine event photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-prom.jpg" alt="Hollywood Prom photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-party.jpg" alt="Party photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-prom2.jpg" alt="Prom photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-baby-shower.jpg" alt="Baby shower photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="ig-tile" aria-label="View on Instagram">
+      <img src="https://btbooth.com/wp-content/uploads/2026/07/btb-gallery-mardi-gras.jpg" alt="Mardi Gras photo booth" loading="lazy">
+      <div class="ig-tile-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+    </a>
+  </div>
+  <div class="ig-cta-wrap">
+    <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="pill pill-ghost">See More on Instagram</a>
+  </div>
+</section>
+
 <!-- SERVICE AREAS MAP -->
 <section id="service-areas" data-theme="dark" aria-label="Service areas">
   <div class="map-inner">
     <div class="map-header">
       <p class="eyebrow reveal">Where We Go</p>
       <h2 class="headline reveal d1" style="color:#f5f5f7">We travel to<br>your event.</h2>
-      <p class="subhead reveal d2" style="color:var(--white-dim);max-width:480px;margin:1rem auto 0">Serving Atlanta and beyond, from the Carolinas to Texas, we bring the full Black Tie Booth experience wherever your event takes place.</p>
+      <p class="subhead reveal d2" style="color:var(--white-dim);max-width:480px;margin:1rem auto 0">Serving Atlanta and beyond, from the Carolinas to the Southeast, we bring the full Black Tie Booth experience wherever your event takes place.</p>
     </div>
     <div id="btb-map" class="reveal"></div>
     <div class="city-grid reveal d1">
       <div class="city-pill"><span class="city-dot"></span>Atlanta, GA</div>
       <div class="city-pill"><span class="city-dot"></span>Charlotte, NC</div>
-      <div class="city-pill"><span class="city-dot"></span>Austin, TX</div>
-      <div class="city-pill"><span class="city-dot"></span>San Antonio, TX</div>
+      <div class="city-pill"><span class="city-dot"></span>Chattanooga, TN</div>
+      <div class="city-pill"><span class="city-dot"></span>Columbia, SC</div>
+      <div class="city-pill"><span class="city-dot"></span>Birmingham, AL</div>
     </div>
   </div>
 </section>
@@ -1216,7 +1278,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
             <div class="fg"><label class="flbl" for="fLn">Last Name</label><input class="fin" type="text" id="fLn" name="last_name" placeholder="Smith" autocomplete="family-name" required></div>
           </div>
           <div class="fg"><label class="flbl" for="fEm">Email</label><input class="fin" type="email" id="fEm" name="email" placeholder="jane@example.com" autocomplete="email" required></div>
-          <div class="fg"><label class="flbl" for="fPh">Phone</label><input class="fin" type="tel" id="fPh" name="phone" placeholder="(404) 555-0100" autocomplete="tel"></div>
+          <div class="fg"><label class="flbl" for="fPh">Phone</label><input class="fin" type="tel" id="fPh" name="phone" placeholder="(830) 375-1159" autocomplete="tel"></div>
           <div class="f2">
             <div class="fg"><label class="flbl" for="fDt">Event Date</label><input class="fin" type="date" id="fDt" name="event_date" required></div>
             <div class="fg">
@@ -1225,8 +1287,20 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
             </div>
           </div>
           <div class="fg">
-            <label class="flbl" for="fBo">Preferred Booth</label>
-            <div class="fsel-wrap"><select class="fsel" id="fBo" name="preferred_booth"><option value="" disabled selected>Select a booth</option><option>British Phone Booth</option><option>360 Video Booth</option><option>Classic Photo Booth</option><option>Vintage Photo Booth</option><option>Mirror Booth</option><option>Video Wall</option><option>Not sure yet</option></select></div>
+            <span class="flbl">Preferred Booth <span style="font-size:0.6rem;opacity:0.55;text-transform:none;letter-spacing:0;">(select all that apply)</span></span>
+            <div class="booth-chips">
+              <span class="booth-chip"><input type="checkbox" id="bBritish" name="booth_british" value="British Phone Booth"><label for="bBritish">British Phone Booth</label></span>
+              <span class="booth-chip"><input type="checkbox" id="b360" name="booth_360" value="360 Video Booth"><label for="b360">360 Video Booth</label></span>
+              <span class="booth-chip"><input type="checkbox" id="bClassic" name="booth_classic" value="Classic Photo Booth"><label for="bClassic">Classic Photo Booth</label></span>
+              <span class="booth-chip"><input type="checkbox" id="bVintage" name="booth_vintage" value="Vintage Photo Booth"><label for="bVintage">Vintage Photo Booth</label></span>
+              <span class="booth-chip"><input type="checkbox" id="bMirror" name="booth_mirror" value="Mirror Booth"><label for="bMirror">Mirror Booth</label></span>
+              <span class="booth-chip"><input type="checkbox" id="bWall" name="booth_wall" value="Video Wall"><label for="bWall">Video Wall</label></span>
+              <span class="booth-chip"><input type="checkbox" id="bUnsure" name="booth_unsure" value="Not sure yet"><label for="bUnsure">Not sure yet</label></span>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="flbl" for="fHr">How did you hear about us?</label>
+            <div class="fsel-wrap"><select class="fsel" id="fHr" name="heard_from"><option value="" disabled selected>Select one</option><option>Instagram</option><option>Google Search</option><option>Facebook</option><option>TikTok</option><option>Friend or Family Referral</option><option>Wedding Planner</option><option>Bridal Show</option><option>Venue Recommendation</option><option>Other</option></select></div>
           </div>
           <div class="fg"><label class="flbl" for="fMs">Additional Details</label><textarea class="fta" id="fMs" name="message" placeholder="Guest count, venue, vision for the event..."></textarea></div>
           <button type="submit" class="fsubmit" id="fBtn">Send Inquiry<span class="fsubmit-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></button>
@@ -1247,7 +1321,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
   <p class="cta-sub reveal d1">Whether it's 50 guests or 5,000. We bring the experience your event deserves. Dates fill quickly.</p>
   <div class="cta-btns reveal d2">
     <a href="#booking" class="pill pill-blue">Book Your Date</a>
-    <a href="tel:+14045550100" class="pill pill-ghost">Call Us</a>
+    <a href="tel:+18303751159" class="pill pill-ghost">Call Us</a>
   </div>
 </section>
 
@@ -1258,14 +1332,14 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
       <span class="f-brand">Black Tie Booth</span>
       <p class="f-tagline">Atlanta's most elegant photo booth experience. Creating unforgettable moments since 2018.</p>
       <div class="f-socials" aria-label="Social media">
-        <a href="https://www.instagram.com/blacktieboothco?igsh=MXVlM3lkZHk3b3FqMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram @blacktieboothco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram @btboothco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
         <a href="#" class="f-soc" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
         <a href="#" class="f-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
       </div>
     </div>
-    <div class="f-col"><h4>Experiences</h4><ul><li><a href="experiences.html">British Phone Booth</a></li><li><a href="experiences.html">360 Video Booth</a></li><li><a href="experiences.html">Classic Photo Booth</a></li><li><a href="experiences.html">Vintage Photo Booth</a></li><li><a href="experiences.html">Mirror Booth</a></li><li><a href="experiences.html#story-videowall">Video Wall</a></li></ul></div>
+    <div class="f-col"><h4>Experiences</h4><ul><li><a href="/experiences/">British Phone Booth</a></li><li><a href="/experiences/">360 Video Booth</a></li><li><a href="/experiences/">Classic Photo Booth</a></li><li><a href="/experiences/">Vintage Photo Booth</a></li><li><a href="/experiences/">Mirror Booth</a></li><li><a href="/experiences/#story-videowall">Video Wall</a></li></ul></div>
     <div class="f-col"><h4>Events</h4><ul><li><a href="#booking">Weddings</a></li><li><a href="#booking">Corporate</a></li><li><a href="#booking">Galas</a></li><li><a href="#booking">Brand Activations</a></li></ul></div>
-    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco?igsh=MXVlM3lkZHk3b3FqMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
+    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+18303751159">(830) 375-1159</a></li><li><a href="mailto:sales@blacklabeleventsandrentals.com">sales@blacklabeleventsandrentals.com</a></li><li><a href="https://www.instagram.com/btboothco?utm_source=qr" target="_blank" rel="noopener">@btboothco</a></li><li><a href="#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p class="f-copy">&copy; 2025 Black Tie Booth. All rights reserved.</p>
@@ -1339,48 +1413,38 @@ const fSuccess = document.getElementById('fSuccess');
 const fBtn = document.getElementById('fBtn');
 
 // ── FORM SUBMISSION ──────────────────────────────────────
-// To activate: sign up at https://formspree.io, create a form
-// pointing to info@BTBooth.com, then replace YOUR_FORM_ID below.
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
 
-  // Basic validation
   const required = form.querySelectorAll('[required]');
   let valid = true;
   required.forEach(el => { if (!el.value.trim()) { el.classList.add('fin-error'); valid = false; } else { el.classList.remove('fin-error'); } });
   if (!valid) return;
 
-  fBtn.textContent = 'Sending…';
-  fBtn.disabled = true;
+  const d = Object.fromEntries(new FormData(form).entries());
+  const booths = [...form.querySelectorAll('input[type=checkbox]:checked')].map(cb => cb.value).join(', ') || 'None selected';
+  const body = [
+    'New Quote Request — Black Tie Booth',
+    '',
+    'Name: ' + (d.name || ''),
+    'Email: ' + (d.email || ''),
+    'Phone: ' + (d.phone || ''),
+    'Event Type: ' + (d.event_type || ''),
+    'Event Date: ' + (d.event_date || ''),
+    'Preferred Booth(s): ' + booths,
+    'Guest Count: ' + (d.guests || ''),
+    'Venue: ' + (d.venue || ''),
+    'How They Heard About Us: ' + (d.heard_from || ''),
+    'Message: ' + (d.message || ''),
+  ].join('\n');
 
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    // Demo mode: no Formspree ID yet, simulate success
-    setTimeout(() => { form.style.display = 'none'; fSuccess.style.display = 'flex'; }, 900);
-    return;
-  }
+  const mailto = 'mailto:sales@blacklabeleventsandrentals.com'
+    + '?subject=' + encodeURIComponent('Quote Request – Black Tie Booth')
+    + '&body=' + encodeURIComponent(body);
 
-  try {
-    const data = new FormData(form);
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      body: data,
-      headers: { Accept: 'application/json' }
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      fSuccess.style.display = 'flex';
-    } else {
-      fBtn.textContent = 'Send Inquiry';
-      fBtn.disabled = false;
-      alert('Something went wrong. Please email us directly at info@BTBooth.com');
-    }
-  } catch {
-    fBtn.textContent = 'Send Inquiry';
-    fBtn.disabled = false;
-    alert('Network error. Please email us directly at info@BTBooth.com');
-  }
+  window.location.href = mailto;
+  form.style.display = 'none';
+  fSuccess.style.display = 'flex';
 });
 
 // Slow down 360 video
@@ -1441,42 +1505,6 @@ if (!prefersReduced) {
   }, { threshold: 0.25 });
 
   document.querySelectorAll('.headline, .cta-h').forEach(el => wrIO.observe(el));
-}
-
-// ── CUSTOM CURSOR ──────────────────────────────────────
-if (!prefersReduced && window.matchMedia('(pointer: fine)').matches) {
-  const dot  = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mx = -100, my = -100, rx = -100, ry = -100;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-  });
-  document.addEventListener('mouseleave', () => document.body.classList.add('cursor-hidden'));
-  document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-hidden'));
-  document.addEventListener('mousedown', () => ring.classList.add('is-click'));
-  document.addEventListener('mouseup',   () => ring.classList.remove('is-click'));
-
-  // Lazy ring follow with spring
-  (function loop() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(loop);
-  })();
-
-  // Hover states
-  const hoverEls  = 'a, button, [role="button"], .pill, .p-cta, .partner-tile, .gi';
-  const textEls   = 'p, h1, h2, h3, li';
-  document.querySelectorAll(hoverEls).forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
-  });
-  document.querySelectorAll(textEls).forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-text'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-text'));
-  });
 }
 
 // ── STORY SECTION MOUSE PARALLAX ───────────────────────
@@ -1575,16 +1603,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-(function() {
+function initBTBMap() {
   var cities = [
-    { name: 'Atlanta, GA',     lat: 33.749, lng: -84.388 },
-    { name: 'Charlotte, NC',   lat: 35.227, lng: -80.843 },
-    { name: 'Austin, TX',      lat: 30.267, lng: -97.743 },
-    { name: 'San Antonio, TX', lat: 29.424, lng: -98.494 }
+    { name: 'Atlanta, GA',        lat: 33.749, lng: -84.388 },
+    { name: 'Charlotte, NC',      lat: 35.227, lng: -80.843 },
+    { name: 'Chattanooga, TN',    lat: 35.045, lng: -85.309 },
+    { name: 'Columbia, SC',       lat: 34.000, lng: -81.035 },
+    { name: 'Birmingham, AL',     lat: 33.519, lng: -86.808 }
   ];
 
   var mapEl = document.getElementById('btb-map');
-  if (!mapEl) return;
+  if (!mapEl || mapEl._leaflet_id) return;
 
   var map = L.map('btb-map', { zoomControl: true, scrollWheelZoom: false, attributionControl: true });
 
@@ -1597,9 +1626,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   var goldIcon = L.divIcon({
     className: '',
     html: '<div style="width:14px;height:14px;border-radius:50%;background:#D4AF6A;border:2px solid rgba(212,175,106,0.35);box-shadow:0 0 16px rgba(212,175,106,0.6);"></div>',
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
-    popupAnchor: [0, -12]
+    iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -12]
   });
 
   cities.forEach(function(c) {
@@ -1609,8 +1636,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 
   var bounds = L.latLngBounds(cities.map(function(c) { return [c.lat, c.lng]; }));
-  map.fitBounds(bounds, { padding: [48, 48] });
-})();
+  map.fitBounds(bounds, { padding: [80, 80] });
+
+  // Repeatedly invalidate until tiles load — handles CMS wrapper rendering delays
+  [100, 300, 600, 1000, 2000].forEach(function(ms) {
+    setTimeout(function() {
+      map.invalidateSize();
+      map.fitBounds(bounds, { padding: [80, 80] });
+    }, ms);
+  });
+
+  // Also re-fire when map scrolls into view
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { map.invalidateSize(); obs.disconnect(); }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(mapEl);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBTBMap);
+} else {
+  initBTBMap();
+}
+window.addEventListener('load', function() { initBTBMap(); });
 </script>
 </body>
 </html>

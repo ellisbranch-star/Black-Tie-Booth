@@ -71,16 +71,23 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
 
 /* STORY BLOCKS */
-.story { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 0 24px 10%; }
+.story { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 0 24px 8%; }
 .story-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
-.story.dark .story-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.8) 100%); }
-#story-vintage .story-bg::after { background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.65) 100%); }
 #story-vintage .story-bg { transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; filter: contrast(1.08) saturate(1.05); }
-#story-videowall .story-bg::after { display: none; }
-.story-content { position: relative; z-index: 2; max-width: 760px; }
+.story-content { position: relative; z-index: 2; max-width: 760px; padding: 0 1rem; }
+.story-desc {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.story-desc-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+}
 .story.dark .headline { color: #f5f5f7; }
 .story.dark .subhead { color: var(--white-dim); }
-.story-num { font-size: clamp(6rem, 16vw, 18rem); font-weight: 700; letter-spacing: -0.06em; line-height: 1; position: absolute; top: 8%; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.04); pointer-events: none; user-select: none; z-index: 1; white-space: nowrap; }
 
 /* FOOTER */
 footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.06); padding: 3.5rem 24px 2rem; }
@@ -102,11 +109,8 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 
 /* CURSOR */
 @media (pointer: fine) {
-  * { cursor: none !important; }
-  .cursor-dot { position: fixed; width: 4px; height: 4px; background: rgba(255,255,255,0.7); border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%,-50%); mix-blend-mode: difference; }
-  .cursor-ring { position: fixed; width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.4s cubic-bezier(0.16,1,0.3,1), height 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s; mix-blend-mode: difference; }
-  .cursor-ring.is-hover { width: 40px; height: 40px; border-color: rgba(212,175,106,0.6); }
-  .cursor-ring.is-click { width: 16px; height: 16px; }
+
+
 }
 
 /* WORD REVEAL */
@@ -117,25 +121,23 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <body>
 
 <div class="grain-overlay" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
-  <a href="index.html" onclick="closeMob()">Home</a>
-  <a href="experiences.html" onclick="closeMob()">Experiences</a>
-  <a href="index.html#booking" onclick="closeMob()">Book Now</a>
+  <a href="/" onclick="closeMob()">Home</a>
+  <a href="/experiences/" onclick="closeMob()">Experiences</a>
+  <a href="/#booking" onclick="closeMob()">Book Now</a>
 </div>
 
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
+  <a href="/" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
   <ul class="nav-links" role="list">
-    <li><a href="experiences.html" class="active">Experiences</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="index.html#testimonials">Reviews</a></li>
+    <li><a href="/experiences/" class="active">Experiences</a></li>
+    <li><a href="/packages/">Packages</a></li>
+    <li><a href="/#testimonials">Reviews</a></li>
   </ul>
-  <a href="index.html#booking" class="nav-cta">Book Now</a>
+  <a href="/#booking" class="nav-cta">Book Now</a>
   <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -154,93 +156,101 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
 <div id="services" aria-label="Our booth experiences">
 
   <!-- 01 British Phone Booth -->
-  <section class="story dark" data-theme="dark" aria-label="British Phone Booth">
-    <div class="story-num" aria-hidden="true">01</div>
-    <div class="story-bg" style="background-image: url('IMG_3364.jpg')" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 01</p>
-      <h2 class="headline reveal d1">British Phone Booth.</h2>
+  <section class="story dark" id="story-phone" data-theme="dark" aria-label="British Phone Booth">
+    <div class="story-bg" style="background-image: url('https://btbooth.com/wp-content/uploads/2026/07/btb-exp-phone.jpg')" aria-hidden="true"></div>
+  </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">British Phone Booth</h2>
       <p class="subhead text-dim reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">An iconic white telephone box reimagined as a fully immersive experience that does more than take photos. Choose the <em>Video Phone</em> option to capture audio and video messages your guests will treasure forever, or opt for the <em>Audio Photo</em> experience with a vintage rotary handset that lets guests record a voice message paired with their photo, giving every print a sentimental, old-world feel. The jaw-dropping centerpiece guests queue for all night.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 02 360 Video -->
   <section class="story dark" id="story-360" data-theme="dark" aria-label="360 Video Booth">
-    <div class="story-num" aria-hidden="true">02</div>
     <div class="story-bg" aria-hidden="true">
-      <video id="vid360" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-        <source src="IMG_2606.MOV" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45);"></div>
-    </div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 02</p>
-      <h2 class="headline reveal d1">360 Video Booth.</h2>
-      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Step onto the platform. The slow-motion arm glides around you. A cinematic clip your guests will share for weeks, ready in seconds. The signature experience at every corporate gala and wedding reception.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+      <iframe
+        src="https://www.youtube.com/embed/npBHCsohbik?autoplay=1&mute=1&loop=1&playlist=npBHCsohbik&controls=0&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+        style="position:absolute;top:-30%;left:-30%;width:160%;height:160%;border:none;pointer-events:none;filter:blur(22px);transform:scale(1.05);opacity:0.6;"
+        allow="autoplay; fullscreen" allowfullscreen loading="lazy">
+      </iframe>
+      <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:40%;height:120%;-webkit-mask-image:radial-gradient(ellipse 75% 80% at 50% 50%,black 40%,transparent 100%);mask-image:radial-gradient(ellipse 75% 80% at 50% 50%,black 40%,transparent 100%);pointer-events:none;">
+        <iframe
+          src="https://www.youtube.com/embed/npBHCsohbik?autoplay=1&mute=1&loop=1&playlist=npBHCsohbik&controls=0&playsinline=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none;"
+          allow="autoplay; fullscreen" allowfullscreen loading="lazy"
+        ></iframe>
       </div>
     </div>
   </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">360 Video Booth</h2>
+      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Step onto the platform. The slow-motion arm glides around you. A cinematic clip your guests will share for weeks, ready in seconds. The signature experience at every corporate gala and wedding reception.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
+      </div>
+    </div>
+  </div>
 
   <!-- 03 Classic Photo Booth -->
-  <section class="story dark" data-theme="dark" aria-label="Classic Photo Booth">
-    <div class="story-num" aria-hidden="true">03</div>
-    <div class="story-bg" style="background-image:url('selfieboothblacktie.png');background-size:cover;background-position:center top;" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 03</p>
-      <h2 class="headline reveal d1">Classic Photo Booth.</h2>
-      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Timeless enclosed booth with instant high-quality prints. Custom photo strips, digital copies, and unlimited sessions every time. A crowd favourite that never goes out of style.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+  <section class="story dark" id="story-classic" data-theme="dark" aria-label="Classic Photo Booth">
+    <div class="story-bg" style="background-image:url('https://btbooth.com/wp-content/uploads/2026/07/btb-exp-classic.png');background-size:cover;background-position:center top;" aria-hidden="true"></div>
+  </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">Classic Photo Booth</h2>
+      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Timeless enclosed booth with instant high-quality prints. Custom photo strips, digital copies, and unlimited sessions every time. A crowd favorite that never goes out of style.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 04 Vintage Photo Booth -->
   <section class="story dark" id="story-vintage" data-theme="dark" aria-label="Vintage Photo Booth">
-    <div class="story-num" aria-hidden="true">04</div>
-    <div class="story-bg" style="background-image:url('vintage-booth-updated.png');background-size:cover;background-position:center;" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 04</p>
-      <h2 class="headline reveal d1">Vintage Photo Booth.</h2>
-      <p class="subhead reveal d2" style="margin-top:0.75rem;color:rgba(245,245,247,0.95);background:rgba(0,0,0,0.55);padding:1rem 1.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">Professional DSLR, studio-grade lighting, custom backdrop. Open, social, and endlessly adaptable to any venue. Studio quality. Event energy. The most photogenic addition to any wedding or gala floor.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+    <div class="story-bg" style="background-image:url('https://btbooth.com/wp-content/uploads/2026/07/btb-exp-vintage.png');background-size:cover;background-position:center;" aria-hidden="true"></div>
+  </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">Vintage Photo Booth</h2>
+      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Professional DSLR, studio-grade lighting, custom backdrop. Open, social, and endlessly adaptable to any venue. Studio quality. Event energy. The most photogenic addition to any wedding or gala floor.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 05 Mirror Booth -->
-  <section class="story dark" data-theme="dark" aria-label="Mirror Booth">
-    <div class="story-num" aria-hidden="true">05</div>
-    <div class="story-bg" style="background-image: url('IMG_3367.JPG')" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 05</p>
-      <h2 class="headline reveal d1">Mirror Booth.</h2>
+  <section class="story dark" id="story-mirror" data-theme="dark" aria-label="Mirror Booth">
+    <div class="story-bg" style="background-image: url('https://btbooth.com/wp-content/uploads/2026/07/btb-exp-mirror.jpg')" aria-hidden="true"></div>
+  </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">Mirror Booth</h2>
       <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">A full-length magic mirror that transforms into an interactive photo experience. Guests tap, sign, and customize their prints right on the screen. Elegant, modern, and endlessly entertaining. The showpiece that elevates any corporate event or black-tie reception.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- 06 Video Wall -->
   <section class="story dark" id="story-videowall" data-theme="dark" aria-label="Video Wall">
-    <div class="story-num" aria-hidden="true">06</div>
-    <div class="story-bg" style="background-image:url('videowall-bg.png');background-size:cover;background-position:center;" aria-hidden="true"></div>
-    <div class="story-content">
-      <p class="eyebrow reveal">Experience 06</p>
-      <h2 class="headline reveal d1">Video Wall.</h2>
-      <p class="subhead reveal d2" style="margin-top:0.75rem;color:rgba(245,245,247,0.95);background:rgba(0,0,0,0.55);padding:1rem 1.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">The pinnacle of event presentation. Our 8 foot LED wall can be configured as an individual accent display or expanded into one breathtaking full scale canvas. Perfect for an elegant wedding seating chart, a branded corporate installation, or a live visual experience that commands the entire room. Each panel delivers crisp 4K clarity and can be tailored to your brand, color palette, or event aesthetic. Refined and unmistakably elevated.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
-        <a href="index.html#booking" class="pill pill-blue">Book this Experience</a>
+    <div class="story-bg" style="background-image:url('https://btbooth.com/wp-content/uploads/2026/07/btb-exp-videowall.png');background-size:cover;background-position:center;" aria-hidden="true"></div>
+  </section>
+  <div class="story-desc-wrap">
+    <div class="story-desc">
+      <h2 class="headline reveal d1">Video Wall</h2>
+      <p class="subhead reveal d2" style="margin-top:0.75rem;color:var(--white-dim);">Our 7 foot LED wall can be configured as an individual accent display or expanded into one breathtaking full scale canvas. Perfect for an elegant wedding seating chart, a branded corporate installation, or a live visual experience that commands the entire room, in 4K clarity.</p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal d3">
+        <a href="/#booking" class="pill pill-blue">Book this Experience</a>
       </div>
     </div>
-  </section>
+  </div>
 
 </div>
 
@@ -264,16 +274,16 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <div class="f-col">
       <h4>Company</h4>
       <ul>
-        <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#testimonials">Reviews</a></li>
-        <li><a href="index.html#booking">Book Now</a></li>
+        <li><a href="/">Home</a></li>
+            <li><a href="/#testimonials">Reviews</a></li>
+        <li><a href="/#booking">Book Now</a></li>
       </ul>
     </div>
     <div class="f-col">
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li>
-        <li><a href="index.html#service-areas">Atlanta, GA and Southeast</a></li>
+        <li><a href="/#service-areas">Atlanta, GA and Southeast</a></li>
       </ul>
     </div>
   </div>
@@ -292,18 +302,7 @@ burger.addEventListener('click', () => { const o = mobNav.classList.toggle('open
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
-if (dot && ring) {
-  let rx=0,ry=0,mx=0,my=0;
-  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-  (function loop(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-  document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
-  });
-  document.addEventListener('mousedown', () => ring.classList.add('is-click'));
-  document.addEventListener('mouseup', () => ring.classList.remove('is-click'));
-}
+
 
 const vid = document.getElementById('vid360');
 if (vid) vid.addEventListener('loadedmetadata', () => { vid.playbackRate = 0.6; });
