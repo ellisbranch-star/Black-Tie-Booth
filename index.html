@@ -525,14 +525,14 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 #instagram { background: var(--dark); padding: 80px 0; }
 .ig-header { text-align: center; padding: 0 24px 48px; }
 .ig-handle {
-  display: inline-flex; align-items: center; gap: 0.5rem;
+  display: inline-flex; align-items: center; gap: 0.45em;
   font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;
   letter-spacing: -0.03em; color: #f5f5f7;
   margin-top: 0.5rem; text-decoration: none;
   transition: color 0.2s;
 }
 .ig-handle:hover { color: var(--gold); }
-.ig-handle svg { width: 22px; height: 22px; }
+.ig-handle svg { width: 0.62em; height: 0.62em; flex-shrink: 0; stroke-width: 1.3; }
 .ig-strip {
   display: flex; gap: 6px; padding: 0 24px;
   overflow-x: auto; scroll-snap-type: x mandatory;
