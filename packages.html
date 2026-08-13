@@ -26,7 +26,6 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
-
 /* NAV */
 #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; background: rgba(22,22,23,0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
 .nav-logo { font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; color: var(--white); }
@@ -45,16 +44,13 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .mob-nav.open { display: flex; }
 .mob-nav a { font-size: 1.5rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; }
 .mob-nav a:hover { color: var(--gold); }
-
 /* TYPOGRAPHY */
 .headline { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; }
 .eyebrow { font-size: clamp(0.6875rem, 1.5vw, 0.8125rem); font-weight: 400; letter-spacing: 0.01em; color: var(--gold); margin-bottom: 0.875rem; }
-
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: none; }
 .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.18s; } .d3 { transition-delay: 0.26s; } .d4 { transition-delay: 0.34s; }
-
 /* PILLS */
 .pill { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; padding: 0.625rem 1.375rem; border-radius: 980px; transition: background 0.2s, color 0.2s, transform 0.15s; cursor: pointer; }
 .pill:hover { transform: scale(1.01); }
@@ -62,13 +58,11 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .pill-blue:hover { background: #111; }
 .pill-ghost { background: rgba(255,255,255,0.1); color: #f5f5f7; }
 .pill-ghost:hover { background: rgba(255,255,255,0.18); }
-
 /* PAGE HERO */
 .page-hero { min-height: 38svh; background: var(--dark); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 96px 24px 64px; position: relative; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,106,0.07) 0%, transparent 70%); pointer-events: none; }
 .page-hero-content { position: relative; z-index: 2; max-width: 640px; }
 .page-hero-content p { font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: 300; color: var(--white-dim); margin-top: 1rem; line-height: 1.6; }
-
 /* EXPERIENCE TABS */
 .pkg-tabs { position: sticky; top: 48px; z-index: 90; background: rgba(22,22,23,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); overflow-x: auto; scrollbar-width: none; }
 .pkg-tabs::-webkit-scrollbar { display: none; }
@@ -76,7 +70,6 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .pkg-tab { font-size: 0.75rem; font-weight: 400; letter-spacing: -0.01em; color: var(--mid); padding: 0.875rem 1.25rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; cursor: pointer; background: none; }
 .pkg-tab:hover { color: var(--white); }
 .pkg-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-
 /* EXPERIENCE SECTION */
 .pkg-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
 .pkg-section-header { text-align: center; margin-bottom: 56px; }
@@ -84,16 +77,13 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .pkg-section-header h2 { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300; letter-spacing: 0.01em; color: var(--gold); font-family: inherit; font-style: normal; }
 .pkg-section-header p { font-size: clamp(0.9375rem, 2vw, 1.0625rem); font-weight: 300; color: var(--white-dim); margin-top: 0.75rem; line-height: 1.65; max-width: 540px; margin-left: auto; margin-right: auto; }
 .pkg-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 0 24px; }
-
 /* PACKAGE CARDS */
 .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 @media (max-width: 900px) { .pkg-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
-
 .pkg-card { background: var(--surface); border-radius: 20px; padding: 2.25rem 2rem; position: relative; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; display: flex; flex-direction: column; }
 .pkg-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); }
 .pkg-card.featured { background: var(--surface2); border-color: rgba(212,175,106,0.25); }
 .pkg-card.featured::before { content: ''; position: absolute; inset: 0; border-radius: 20px; border: 1px solid rgba(212,175,106,0.3); pointer-events: none; }
-
 .pkg-badge { display: inline-block; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: var(--gold); color: #000; padding: 0.25rem 0.75rem; border-radius: 980px; margin-bottom: 1rem; }
 .pkg-tier { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
 .pkg-price { font-size: 3rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--white); margin-bottom: 0.25rem; }
@@ -107,7 +97,6 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .pkg-cta:hover { background: rgba(255,255,255,0.13); border-color: rgba(212,175,106,0.6); }
 .pkg-card.featured .pkg-cta { background: var(--gold); color: #000; }
 .pkg-card.featured .pkg-cta:hover { background: #e0bc70; }
-
 /* ADD-ONS */
 .addons-section { background: var(--surface); padding: 80px 24px; }
 .addons-inner { max-width: 900px; margin: 0 auto; }
@@ -120,19 +109,16 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .addon-name { font-size: 0.9375rem; font-weight: 400; color: var(--white); }
 .addon-desc { font-size: 0.75rem; font-weight: 300; color: var(--mid); margin-top: 0.2rem; }
 .addon-price { font-size: 0.9375rem; font-weight: 500; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
-
 /* NOTES */
 .notes-section { padding: 64px 24px; max-width: 720px; margin: 0 auto; }
 .notes-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
 .notes-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
 .notes-list li svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; margin-top: 3px; }
-
 /* CTA BANNER */
 .cta-banner { background: var(--surface2); padding: 80px 24px; text-align: center; }
 .cta-banner h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; color: var(--white); }
 .cta-banner p { font-size: clamp(0.9375rem, 2vw, 1.1rem); font-weight: 300; color: var(--white-dim); margin-top: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; }
 .cta-banner-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
-
 /* FOOTER */
 footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; }
@@ -147,8 +133,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
 .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
 .f-copy { font-size: 0.75rem; color: var(--mid); }
 .f-atl { font-size: 0.75rem; color: var(--mid); display: flex; align-items: center; gap: 0.35rem; }
-
-
 /* Glam add-on tag */
 .pkg-glam { display: inline-block; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.02em; color: var(--gold); background: rgba(212,175,106,0.1); border: 1px solid rgba(212,175,106,0.25); padding: 0.2rem 0.65rem; border-radius: 980px; margin-top: 0.5rem; }
 /* CHECK ICON */
@@ -156,7 +140,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
 </style>
 </head>
 <body>
-
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Navigation">
   <a href="/" onclick="closeMob()">Home</a>
@@ -166,7 +149,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   <a href="/consultation/" onclick="closeMob()">Consultation</a>
   <a href="/#booking" onclick="closeMob()">Book Now</a>
 </div>
-
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="Black Tie Booth home">Black Tie Booth</a>
@@ -182,7 +164,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-content">
@@ -191,7 +172,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <p class="reveal d2">Three tiers for every occasion. Every package includes a dedicated attendant, unlimited sessions, and digital gallery delivery within 48 hours. Choose your experience below.</p>
   </div>
 </section>
-
 <!-- TABS -->
 <div class="pkg-tabs" role="tablist" aria-label="Experiences">
   <div class="pkg-tabs-inner">
@@ -203,8 +183,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <button class="pkg-tab" onclick="scrollToSection('videowall',this)" role="tab">Video Wall</button>
   </div>
 </div>
-
-
 <!-- ── 01 VINTAGE PHOTO BOOTH ─────────────────────────── -->
 <div id="vintage">
   <section class="pkg-section">
@@ -214,7 +192,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
       <p class="reveal d2">Professional DSLR camera, studio grade lighting, and a custom backdrop. Open air and endlessly adaptable. The most photogenic addition to any wedding or gala floor.</p>
     </div>
     <div class="pkg-grid">
-
       <!-- ESSENTIAL -->
       <div class="pkg-card reveal">
         <p class="pkg-tier">Essential</p>
@@ -234,7 +211,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         </ul>
         <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
-
       <!-- SIGNATURE -->
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -252,7 +228,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         </ul>
         <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
-
       <!-- BLACK TIE -->
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">Black Tie</p>
@@ -274,8 +249,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   </section>
   <div class="pkg-divider"></div>
 </div>
-
-
 <!-- ── 02 CLASSIC PHOTO BOOTH ─────────────────────────── -->
 <div id="classic">
   <section class="pkg-section">
@@ -337,8 +310,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   </section>
   <div class="pkg-divider"></div>
 </div>
-
-
 <!-- ── 03 BRITISH PHONE BOOTH ─────────────────────────── -->
 <div id="phone">
   <section class="pkg-section">
@@ -348,7 +319,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
       <p class="reveal d2">An iconic white telephone box dressed in florals, candle lanterns, and soft neon glow. Guests step inside, pick up the handset, and leave an audio or video message that becomes part of your story. There is nothing else like it on an Atlanta event floor.</p>
     </div>
     <div class="pkg-grid">
-
       <!-- ESSENTIAL -->
       <div class="pkg-card reveal">
         <p class="pkg-tier">Essential</p>
@@ -363,7 +333,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         </ul>
         <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
-
       <!-- SIGNATURE -->
       <div class="pkg-card featured reveal d1">
         <div class="pkg-badge">Most Popular</div>
@@ -381,7 +350,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         </ul>
         <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
-
       <!-- BLACK TIE -->
       <div class="pkg-card reveal d2">
         <p class="pkg-tier">Black Tie</p>
@@ -397,13 +365,10 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
         </ul>
         <a href="/#booking" class="pkg-cta">Request a Quote</a>
       </div>
-
     </div>
   </section>
   <div class="pkg-divider"></div>
 </div>
-
-
 <!-- ── 04 360 VIDEO BOOTH ─────────────────────────────── -->
 <div id="360">
   <section class="pkg-section">
@@ -415,7 +380,7 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <div class="pkg-grid">
       <div class="pkg-card reveal">
         <p class="pkg-tier">Essential</p>
-        <div class="pkg-price"><span>$</span>950</div>
+        <div class="pkg-price"><span>$</span>650</div>
         <p class="pkg-duration">Up to 2 hours</p>
         <div class="pkg-divider-inner"></div>
         <ul class="pkg-features">
@@ -462,8 +427,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   </section>
   <div class="pkg-divider"></div>
 </div>
-
-
 <!-- ── 05 MIRROR BOOTH ────────────────────────────────── -->
 <div id="mirror">
   <section class="pkg-section">
@@ -525,8 +488,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
   </section>
   <div class="pkg-divider"></div>
 </div>
-
-
 <!-- ── 06 VIDEO WALL ──────────────────────────────────── -->
 <div id="videowall">
   <section class="pkg-section">
@@ -585,8 +546,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     </div>
   </section>
 </div>
-
-
 <!-- ADD-ONS -->
 <section class="addons-section">
   <div class="addons-inner">
@@ -635,8 +594,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     </div>
   </div>
 </section>
-
-
 <!-- NOTES -->
 <section class="notes-section">
   <p class="eyebrow reveal" style="text-align:center;">Good to Know</p>
@@ -649,8 +606,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <li><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3.5 3.5 6.5-7"/></svg>All packages include professional setup, breakdown, and a dedicated onsite attendant for the full duration.</li>
   </ul>
 </section>
-
-
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <p class="eyebrow reveal">Ready to Book?</p>
@@ -661,8 +616,6 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     <a href="/experiences/" class="pill pill-ghost">View Experiences</a>
   </div>
 </section>
-
-
 <!-- FOOTER -->
 <footer role="contentinfo">
   <div class="footer-grid">
@@ -672,14 +625,13 @@ footer { background: var(--dark); padding: 56px 24px 32px; border-top: 1px solid
     </div>
     <div class="f-col"><h4>Experiences</h4><ul><li><a href="/experiences/">British Phone Booth</a></li><li><a href="/experiences/">360 Video Booth</a></li><li><a href="/experiences/">Classic Photo Booth</a></li><li><a href="/experiences/">Vintage Photo Booth</a></li><li><a href="/experiences/">Mirror Booth</a></li><li><a href="/experiences/#story-videowall">Video Wall</a></li></ul></div>
     <div class="f-col"><h4>Packages</h4><ul><li><a href="/packages/#vintage">Vintage Booth</a></li><li><a href="/packages/#classic">Classic Booth</a></li><li><a href="/packages/#phone">Phone Booth</a></li><li><a href="/packages/#360">360 Video</a></li><li><a href="/packages/#mirror">Mirror Booth</a></li><li><a href="/packages/#videowall">Video Wall</a></li></ul></div>
-    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@BTBooth.com">info@BTBooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="/#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
+    <div class="f-col"><h4>Contact</h4><ul><li><a href="tel:+14045550100">(404) 555-0100</a></li><li><a href="mailto:info@btbooth.com">info@btbooth.com</a></li><li><a href="https://www.instagram.com/blacktieboothco" target="_blank" rel="noopener">@blacktieboothco</a></li><li><a href="/#booking">Atlanta, GA &amp; Southeast</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p class="f-copy">&copy; 2026 Black Tie Booth. All rights reserved.</p>
     <div class="f-atl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" width="12" height="12"><path d="M8 1a5 5 0 00-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 00-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>Made with love in Atlanta, GA</div>
   </div>
 </footer>
-
 <script>
 const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mobNav');
@@ -692,14 +644,12 @@ burger.addEventListener('click', () => {
   document.body.style.overflow = open ? 'hidden' : '';
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMob(); });
-
 function scrollToSection(id, btn) {
   const el = document.getElementById(id);
   if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 96; window.scrollTo({ top, behavior: 'smooth' }); }
   document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
 }
-
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReduced) {
   const io = new IntersectionObserver(entries => {
@@ -709,7 +659,6 @@ if (!prefersReduced) {
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 }
-
 // Highlight active tab on scroll
 const sections = ['vintage','classic','phone','360','mirror','videowall'];
 const tabs = document.querySelectorAll('.pkg-tab');
