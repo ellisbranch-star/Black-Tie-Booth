@@ -29,7 +29,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 /* NAV */
 #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; background: rgba(22,22,23,0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
 .nav-logo { font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.01em; color: var(--white); }
-.nav-links { display: flex; gap: 1.75rem; list-style: none; }
+.nav-links { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 1.75rem; list-style: none; }
 .nav-links a { font-size: 0.875rem; font-weight: 400; letter-spacing: -0.01em; color: var(--white-dim); transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--white); }
 .nav-cta { font-size: 0.875rem; font-weight: 400; letter-spacing: -0.01em; color: var(--gold); transition: color 0.2s; }
