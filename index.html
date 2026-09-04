@@ -366,6 +366,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .spec-lbl { font-size: 0.75rem; font-weight: 400; color: var(--mid); letter-spacing: -0.01em; }
 @media (max-width: 600px) { .spec { padding: 0 1.25rem; } .spec-val { font-size: 1.5rem; } }
 @media (max-width: 600px) { .exp-card { min-height: 270px; } }
+@media (min-width: 601px) { #expCardPhone { background-size: cover !important; } }
 @media (max-width: 600px) { #testimonials, #booking, #pricing { padding-left: 16px; padding-right: 16px; } }
 @media (max-width: 480px) { .booking-perks { gap: 0.75rem; } .booking-perks li { font-size: 0.875rem; } }
 /* ── GALLERY (Apple-grid) ────────────────────────────── */
@@ -967,7 +968,7 @@ footer { background: var(--surface2); border-top: 1px solid rgba(255,255,255,0.0
     <h2 class="headline reveal d1" style="text-align:center;color:#f5f5f7;margin-bottom:0.75rem;">Every occasion.<br>One unforgettable booth.</h2>
     <p class="subhead reveal d2" style="text-align:center;color:var(--white-dim);max-width:600px;margin:0 auto 3.5rem;">From intimate weddings to corporate galas. Each experience is designed to become the most talked-about moment of the night.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;" class="reveal d2">
-      <div class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/IMG_3364.jpg') center/contain no-repeat;">
+      <div id="expCardPhone" class="exp-card" style="background:#0a0a0a url('https://btbooth.com/wp-content/uploads/2026/07/IMG_3364.jpg') center/contain no-repeat;">
         <a href="/experiences/#story-phone" class="exp-card-link" aria-label="British Phone Booth experience"></a>
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.25) 100%);z-index:1;"></div>
         <div class="exp-card-inner" style="z-index:2;">
